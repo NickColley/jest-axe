@@ -1,0 +1,30 @@
+{
+  "name": "jest-axe",
+  "version": "1.0.0",
+  "description": "Custom Jest matcher for aXe for testing accessibility",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && jest"
+  },
+  "keywords": [
+    "jest",
+    "matcher",
+    "axe",
+    "accessibility",
+    "a11y"
+  ],
+  "author": "Nick Colley",
+  "license": "MIT",
+  "engines": {
+    "node": "8.9.4"
+  },
+  "dependencies": {
+    "axe-core": "^2.6.1",
+    "jest-matcher-utils": "^22.2.0",
+    "lodash.merge": "^4.6.1"
+  },
+  "devDependencies": {
+    "jest": "^22.2.2",
+    "standard": "^10.0.3"
+  }
+}

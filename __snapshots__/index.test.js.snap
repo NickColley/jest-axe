@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jest-axe readme first readme example should demonstrate this matcher\`s usage 1`] = `
+"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
+
+Expected the HTML found at $('body > img') to have no violations:
+
+<img src=\\"#\\">
+
+Recieved:
+
+[31m\\"Images must have alternate text (image-alt)\\"[39m
+
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/2.6/image-alt?application=axeAPI"
+`;
+
+exports[`jest-axe toHaveNoViolations returns correctly formatted message when violations are present 1`] = `
+"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
+
+Expected the HTML found at $('body > img') to have no violations:
+
+<img src=\\"\\">
+
+Recieved:
+
+[31m\\"Images must have alternate text (image-alt)\\"[39m
+
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/2.6/image-alt?application=axeAPI"
+`;
+
+exports[`jest-axe toHaveNoViolations returns properly formatted text with more complex example 1`] = `
+"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
+
+Expected the HTML found at $('body > img[src$=\\"example.com\\"]') to have no violations:
+
+<img src=\\"http://example.com\\">
+
+Expected the HTML found at $('body > img:nth-child(4)') to have no violations:
+
+<img src=\\"http://example.com/2\\">
+
+Recieved:
+
+[31m\\"Images must have alternate text (image-alt)\\"[39m
+
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/2.6/image-alt?application=axeAPI
+
+────────
+
+Expected the HTML found at $('body > input[type=\\"text\\"]') to have no violations:
+
+<input type=\\"text\\">
+
+Recieved:
+
+[31m\\"Form elements must have labels (label)\\"[39m
+
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/2.6/label?application=axeAPI"
+`;
