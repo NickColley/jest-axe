@@ -28,6 +28,8 @@ it('should demonstrate this matcher`s usage', async () => {
 })
 ```
 
+![Screenshot of the resulting output from the usage example](example-cli-usage.png)
+
 ### Axe configuration
 
 The `axe` function allows options to be set, these are the [same options as documented in axe-core](https://github.com/dequelabs/axe-core/blob/develop-2x/doc/API.md#options-parameter)
