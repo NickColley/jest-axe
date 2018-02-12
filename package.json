@@ -2,6 +2,7 @@
   "name": "jest-axe",
   "version": "1.0.0",
   "description": "Custom Jest matcher for aXe for testing accessibility",
+  "repository": "nickcolley/jest-axe",
   "main": "index.js",
   "scripts": {
     "test": "standard && jest"
