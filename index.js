@@ -32,7 +32,7 @@ function configureAxe (defaultOptions = {}) {
     // aXe requires real Nodes so we need to inject into Jests' jsdom document.
     document.body.innerHTML = html
 
-    const options = merge(defaultOptions, additionalOptions)
+    const options = merge({}, defaultOptions, additionalOptions)
 
     return new Promise((resolve, reject) => {
       axeCore.run(document.body, options, (err, results) => {

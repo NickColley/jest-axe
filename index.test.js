@@ -91,6 +91,35 @@ describe('jest-axe', () => {
         axe('Hello, World')
       }).toThrow('html parameter ("Hello, World") has no elements')
     })
+
+    it('should not mutate previous options', async () => {
+      let results = await axe(failingHtmlExample, {
+        rules: {
+          'link-name': { enabled: false }
+        }
+      })
+      let violations = results.violations
+      expect(violations.length).toBe(0)
+
+      const configuredAxe = configureAxe({
+        rules: {
+          'link-name': { enabled: false }
+        }
+      })
+
+      results = await configuredAxe(failingHtmlExample, {
+        rules: {
+          'link-name': { enabled: false }
+        }
+      })
+      violations = results.violations
+      expect(violations.length).toBe(0)
+
+      results = await axe(failingHtmlExample)
+      const violation = results.violations[0]
+      expect(violation.id).toBe('link-name')
+      expect(violation.description).toBe('Ensures links have discernible text')
+    })
   })
   describe('toHaveNoViolations', () => {
     const failingAxeResults = {

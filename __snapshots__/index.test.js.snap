@@ -55,5 +55,21 @@ Received:
 
 [31m\\"Form elements must have labels (label)\\"[39m
 
-Try fixing it with this help: https://dequeuniversity.com/rules/axe/2.6/label?application=axeAPI"
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/2.6/label?application=axeAPI
+
+────────
+
+Expected the HTML found at $('body > a[href$=\\"#link-name\\"]') to have no violations:
+
+<a href=\\"#link-name\\"></a>
+
+Expected the HTML found at $('body > a[href$=\\"#link-name-2\\"]') to have no violations:
+
+<a href=\\"#link-name-2\\"></a>
+
+Received:
+
+[31m\\"Links must have discernible text (link-name)\\"[39m
+
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/2.6/link-name?application=axeAPI"
 `;
