@@ -83,7 +83,7 @@ describe('jest-axe', () => {
     it('throws with non-string input', () => {
       expect(() => {
         // @ts-ignore
-        axe({}) 
+        axe({})
       }).toThrow('html parameter should be a string not a object')
     })
 
