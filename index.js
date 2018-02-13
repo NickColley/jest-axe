@@ -78,7 +78,7 @@ const toHaveNoViolations = {
         return (
           htmlAndTarget +
           lineBreak +
-          `Recieved:` +
+          `Received:` +
           lineBreak +
           printReceived(`${violation.help} (${violation.id})`) +
           lineBreak +

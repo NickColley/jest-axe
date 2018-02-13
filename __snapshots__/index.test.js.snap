@@ -7,7 +7,7 @@ Expected the HTML found at $('body > img') to have no violations:
 
 <img src=\\"#\\">
 
-Recieved:
+Received:
 
 [31m\\"Images must have alternate text (image-alt)\\"[39m
 
@@ -21,7 +21,7 @@ Expected the HTML found at $('body > img') to have no violations:
 
 <img src=\\"\\">
 
-Recieved:
+Received:
 
 [31m\\"Images must have alternate text (image-alt)\\"[39m
 
@@ -39,7 +39,7 @@ Expected the HTML found at $('body > img:nth-child(4)') to have no violations:
 
 <img src=\\"http://example.com/2\\">
 
-Recieved:
+Received:
 
 [31m\\"Images must have alternate text (image-alt)\\"[39m
 
@@ -51,7 +51,7 @@ Expected the HTML found at $('body > input[type=\\"text\\"]') to have no violati
 
 <input type=\\"text\\">
 
-Recieved:
+Received:
 
 [31m\\"Form elements must have labels (label)\\"[39m
 
