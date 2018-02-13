@@ -36,9 +36,23 @@ export type JestAxe = (html: string, options?: AxeOptions) => Promise<AxeResults
  */
 export const configureAxe: (options: AxeOptions) => JestAxe;
 
+/**
+ * Results from asserting whether aXe verification passed.
+ */
 export interface AssertionsResult {
+    /**
+     * Actual checked aXe verification results.
+     */
     actual: Result[];
+
+    /**
+     * @returns Message from the Jest assertion.
+     */
     message(): string;
+
+    /**
+     * Whether the assertion passed.
+     */
     pass: boolean;
 }
 
