@@ -1,3 +1,7 @@
+# 2.1.1
+
+- Fixed a bug with default options being mutated - [(Commit)](https://github.com/nickcolley/jest-axe/commit/60412a52461e610ab6d2391441edda0a803d0dc5)
+
 # 2.1.0
 (Made a mistake publishing, so is a minor version when should have been a patch)
 
