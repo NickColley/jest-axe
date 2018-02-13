@@ -331,5 +331,25 @@ describe('jest-axe', () => {
         expect(await axe(html)).toHaveNoViolations()
       })
     })
+    describe('readme react example', () => {
+      const { axe, toHaveNoViolations } = require('jest-axe')
+
+      expect.extend(toHaveNoViolations)
+
+      const React = require('react')
+      const ReactDOMServer = require('react-dom/server')
+
+      it('renders correctly', async () => {
+        const html = ReactDOMServer.renderToString(
+          React.createElement('img', { src: '#' })
+        )
+
+        const results = await axe(html)
+
+        expect(() => {
+          expect(results).toHaveNoViolations()
+        }).toThrowErrorMatchingSnapshot()
+      })
+    })
   })
 })

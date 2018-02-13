@@ -30,6 +30,27 @@ it('should demonstrate this matcher`s usage', async () => {
 
 ![Screenshot of the resulting output from the usage example](example-cli-usage.png)
 
+### With React
+
+```javascript
+const { axe, toHaveNoViolations } = require('jest-axe')
+
+expect.extend(toHaveNoViolations)
+
+const React = require('react')
+const ReactDOMServer = require('react-dom/server')
+
+it('should demonstrate this matcher`s usage with react', async () => {
+  const html = ReactDOMServer.renderToString(
+    <img src='#' />
+  )
+
+  const results = await axe(html)
+
+  expect(results).toHaveNoViolations()
+})
+```
+
 ### Axe configuration
 
 The `axe` function allows options to be set, these are the [same options as documented in axe-core](https://github.com/dequelabs/axe-core/blob/develop-2x/doc/API.md#options-parameter)
