@@ -44,10 +44,10 @@ function configureAxe (defaultOptions = {}) {
 }
 
 /**
- * Custom jest expect matcher, that can check aXe results for violations.
+ * Custom Jest expect matcher, that can check aXe results for violations.
  * @param {results} object requires an instance of aXe's results object
  * (https://github.com/dequelabs/axe-core/blob/develop-2x/doc/API.md#results-object)
- * @returns {object} returns jest matcher object
+ * @returns {object} returns Jest matcher object
  */
 const toHaveNoViolations = {
   toHaveNoViolations (results) {
