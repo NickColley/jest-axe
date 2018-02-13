@@ -82,7 +82,8 @@ describe('jest-axe', () => {
 
     it('throws with non-string input', () => {
       expect(() => {
-        axe({})
+        // @ts-ignore
+        axe({}) 
       }).toThrow('html parameter should be a string not a object')
     })
 
@@ -93,6 +94,7 @@ describe('jest-axe', () => {
     })
   })
   describe('toHaveNoViolations', () => {
+    /** @type Object */
     const failingAxeResults = {
       violations: [
         {
@@ -178,6 +180,7 @@ describe('jest-axe', () => {
     it('throws error if non axe results object is passed', () => {
       const matcherFunction = toHaveNoViolations.toHaveNoViolations
       expect(() => {
+        // @ts-ignore
         matcherFunction({})
       }).toThrow('No violations found in aXe results object')
     })

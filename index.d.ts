@@ -1,4 +1,4 @@
-import { AxeResults, RunOnly } from "axe-core";
+import { AxeResults, Result, RunOnly } from "axe-core";
 
 /**
  * Version of the aXe verifier with defaults set.
@@ -36,13 +36,19 @@ export type JestAxe = (html: string, options?: AxeOptions) => Promise<AxeResults
  */
 export const configureAxe: (options: AxeOptions) => JestAxe;
 
+export interface AssertionsResult {
+    actual: Result[];
+    message(): string;
+    pass: boolean;
+}
+
 /**
  * Asserts an aXe-verified result has no violations.
  *
+ * @param results   aXe verification result, if not running via expect().
  * @returns Jest expectations for the aXe result.
- * @remarks Must be called on an expect wrapping an aXe results object.
  */
-export type IToHaveNoViolations = () => { message(): string, pass: boolean };
+export type IToHaveNoViolations = (results?: Partial<AxeResults>) => AssertionsResult;
 
 export const toHaveNoViolations: {
     toHaveNoViolations: IToHaveNoViolations;
