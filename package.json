@@ -6,7 +6,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "test": "standard && jest && test:types",
+    "test": "standard && jest && npm run test:types",
     "test:types": "tsc --project tsconfig.test.json"
   },
   "keywords": [
