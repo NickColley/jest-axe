@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "baseUrl": ".",
+        "checkJs": true,
+        "lib": [
+            "dom",
+            "es2015"
+        ],
+        "noEmit": true,
+        "paths": {
+            "jest-axe": ["./index.d.ts"]
+        },
+        "pretty": true
+    },
+    "include": [
+        "./index.test.js"
+    ]
+}

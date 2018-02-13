@@ -4,8 +4,10 @@
   "description": "Custom Jest matcher for aXe for testing accessibility",
   "repository": "nickcolley/jest-axe",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "standard && jest"
+    "test": "standard && jest && npm run test:types",
+    "test:types": "tsc --project tsconfig.test.json"
   },
   "keywords": [
     "jest",
@@ -25,7 +27,10 @@
     "lodash.merge": "^4.6.1"
   },
   "devDependencies": {
+    "@types/jest": "^22.1.2",
+    "@types/node": "^9.4.5",
     "jest": "^22.2.2",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "typescript": "^2.7.1"
   }
 }
