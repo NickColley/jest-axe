@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/nickcolley/jest-axe.svg?branch=master)](https://travis-ci.org/nickcolley/jest-axe)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Custom Jest matcher for [aXe](https://github.com/dequelabs/axe-core) for testing accessibility
+Custom [Jest](https://jest-bot.github.io/jest/) matcher for [aXe](https://github.com/dequelabs/axe-core) for testing accessibility
 
 ## Installation:
 ```bash
