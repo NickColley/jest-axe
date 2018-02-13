@@ -66,7 +66,7 @@ const toHaveNoViolations = {
       const horizontalLine = '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500'
 
       return violations.map(violation => {
-        var htmlAndTarget = violation.nodes.map(node => {
+        const htmlAndTarget = violation.nodes.map(node => {
           const selector = node.target.join(', ')
           return (
             `Expected the HTML found at $('${selector}') to have no violations:` +
