@@ -5,7 +5,8 @@
   "repository": "nickcolley/jest-axe",
   "main": "index.js",
   "scripts": {
-    "test": "standard && jest"
+    "test": "standard && jest",
+    "test:ci": "npm run test -- --no-color"
   },
   "keywords": [
     "jest",
