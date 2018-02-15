@@ -1,3 +1,7 @@
+# 2.1.2
+
+- Allow Node.js versions higher than LTS to run jest-axe - [(PR #13)](https://github.com/nickcolley/jest-axe/pull/13) Thanks @connor-baer
+
 # 2.1.1
 
 - Fixed a bug with default options being mutated - [(Commit)](https://github.com/nickcolley/jest-axe/commit/60412a52461e610ab6d2391441edda0a803d0dc5)
