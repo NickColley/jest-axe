@@ -2,8 +2,8 @@
 
 const axeCore = require('axe-core')
 const merge = require('lodash.merge')
-const isUndefined = require('lodash.isUndefined')
-const isString = require('lodash.isString')
+const isUndefined = require('lodash.isundefined')
+const isString = require('lodash.isstring')
 
 const { printReceived, matcherHint } = require('jest-matcher-utils')
 
