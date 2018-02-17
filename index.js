@@ -2,6 +2,9 @@
 
 const axeCore = require('axe-core')
 const merge = require('lodash.merge')
+const isUndefined = require('lodash.isUndefined')
+const isString = require('lodash.isString')
+
 const { printReceived, matcherHint } = require('jest-matcher-utils')
 
 /**
@@ -19,9 +22,8 @@ function configureAxe (defaultOptions = {}) {
    * @returns {promise} returns promise that will resolve with axe-core#run results object
    */
   return function axe (html, additionalOptions = {}) {
-    const htmlType = (typeof html)
-    if (htmlType !== 'string') {
-      throw new Error(`html parameter should be a string not a ${htmlType}`)
+    if (!isString(html)) {
+      throw new Error(`html parameter should be a string not a ${typeof html}`)
     }
 
     const hasHtmlElements = /(<([^>]+)>)/i.test(html)
@@ -53,7 +55,7 @@ const toHaveNoViolations = {
   toHaveNoViolations (results) {
     const violations = results.violations
 
-    if (typeof violations === 'undefined') {
+    if (isUndefined(violations)) {
       throw new Error('No violations found in aXe results object')
     }
 
