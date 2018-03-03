@@ -1,3 +1,7 @@
+# 2.1.3
+
+- Loosen Node engines requirement to 8.x - [(PR #20)](https://github.com/nickcolley/jest-axe/pull/20)
+
 # 2.1.2
 
 - Allow Node.js versions higher than LTS to run jest-axe - [(PR #13)](https://github.com/nickcolley/jest-axe/pull/13) Thanks @connor-baer
