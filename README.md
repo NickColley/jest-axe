@@ -29,7 +29,7 @@ it('should demonstrate this matcher`s usage', async () => {
 })
 ```
 
-![Screenshot of the resulting output from the usage example](example-cli-usage.png)
+![Screenshot of the resulting output from the usage example](example-cli.png)
 
 ### With React
 
