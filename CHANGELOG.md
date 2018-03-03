@@ -1,3 +1,7 @@
+# 2.1.4
+
+- Only publish index.js - [(PR #22)](https://github.com/nickcolley/jest-axe/pull/22)
+
 # 2.1.3
 
 - Loosen Node engines requirement to 8.x - [(PR #20)](https://github.com/nickcolley/jest-axe/pull/20)
