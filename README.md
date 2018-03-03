@@ -1,5 +1,6 @@
 # jest-axe
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nickcolley/jest-axe.svg)](https://greenkeeper.io/)
 [![npm version](https://img.shields.io/npm/v/jest-axe.svg)](http://npm.im/jest-axe)
 [![Build Status](https://travis-ci.org/nickcolley/jest-axe.svg?branch=master)](https://travis-ci.org/nickcolley/jest-axe)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
