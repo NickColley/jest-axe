@@ -125,7 +125,7 @@ it('should demonstrate this matcher`s usage with a default config', async () => 
 ```
 
 ## Thanks
-- [Jest](https://jest-bot.github.io/jest/) for the great test runner that allows extending matchers.
+- [Jest](https://facebook.github.io/jest/) for the great test runner that allows extending matchers.
 - [aXe](https://www.axe-core.org/) for the wonderful axe-core that makes it so easy to do this.
 - Government Digital Service for making coding in the open the default.
   - GOV.UK Publishing Frontend team who published the [basis of the aXe reporter](https://github.com/alphagov/govuk_publishing_components/blob/581c22c9d35d85d5d985571d007f6397a4399f4c/spec/javascripts/govuk_publishing_components/AccessibilityTestSpec.js)
