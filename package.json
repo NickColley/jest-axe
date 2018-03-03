@@ -5,7 +5,8 @@
   "repository": "nickcolley/jest-axe",
   "main": "index.js",
   "scripts": {
-    "test": "standard && jest"
+    "test": "standard && jest",
+    "test:ci": "npm run test -- --no-color"
   },
   "keywords": [
     "jest",
@@ -25,6 +26,7 @@
     "lodash.merge": "^4.6.1"
   },
   "devDependencies": {
+    "greenkeeper-lockfile": "^1.13.2",
     "jest": "^22.2.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
