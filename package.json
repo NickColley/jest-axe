@@ -4,6 +4,7 @@
   "description": "Custom Jest matcher for aXe for testing accessibility",
   "repository": "nickcolley/jest-axe",
   "main": "index.js",
+  "files": [ "index.js" ],
   "scripts": {
     "test": "standard && jest"
   },
