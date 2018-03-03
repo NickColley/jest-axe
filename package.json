@@ -20,14 +20,14 @@
     "node": ">= 8.9.4"
   },
   "dependencies": {
-    "axe-core": "^2.6.1",
-    "jest-matcher-utils": "^22.2.0",
-    "lodash.merge": "^4.6.1"
+    "axe-core": "2.6.1",
+    "jest-matcher-utils": "22.2.0",
+    "lodash.merge": "4.6.1"
   },
   "devDependencies": {
-    "jest": "^22.2.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "standard": "^10.0.3"
+    "jest": "22.2.2",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "standard": "11.0.0"
   }
 }
