@@ -6,6 +6,14 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 Custom [Jest](https://jest-bot.github.io/jest/) matcher for [aXe](https://github.com/dequelabs/axe-core) for testing accessibility
+## ??? This project does not guarantee what you build is accessible.
+The GDS Accessibility team found that only [~30% of issues are found by automated testing](https://accessibility.blog.gov.uk/2017/02/24/what-we-found-when-we-tested-tools-on-the-worlds-least-accessible-webpage).
+
+Tools like aXe are similar to [code linters](https://en.wikipedia.org/wiki/Lint_%28software%29) such as [eslint](https://eslint.org/) or [sass-lint](https://github.com/sasstools/sass-lint), they can find common issues but can not guarantee what you build works for users.
+
+You'll also need to:
+- test your interface with the [assistive technologies that real users use](https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#when-to-test) (see also [WebAIM's survey results](https://webaim.org/projects/screenreadersurvey7/#primary)).
+- include people with disabilities in user research.
 
 ## ⚠️✋ This project does not guarantee what you build is accessible.
 The GDS Accessibility team found that only [~30% of issues are found by automated testing](https://accessibility.blog.gov.uk/2017/02/24/what-we-found-when-we-tested-tools-on-the-worlds-least-accessible-webpage).
