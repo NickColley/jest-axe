@@ -63,7 +63,7 @@ it('should demonstrate this matcher`s usage with react', async () => {
 
 ### Axe configuration
 
-The `axe` function allows options to be set, these are the [same options as documented in axe-core](https://github.com/dequelabs/axe-core/blob/develop-2x/doc/API.md#options-parameter)
+The `axe` function allows options to be set with the [same options as documented in axe-core](https://github.com/dequelabs/axe-core/blob/develop-2x/doc/API.md#options-parameter):
 
 ```javascript
 const { axe, toHaveNoViolations } = require('jest-axe')
@@ -95,7 +95,7 @@ it('should demonstrate this matcher`s usage with a custom config', async () => {
 
 If you find yourself repeating the same options multiple times, you can export a version of the `axe` function with defaults set.
 
-Note: You can still pass additional options to this new instance, they will be merged with the defaults.
+Note: You can still pass additional options to this new instance; they will be merged with the defaults.
 
 This could be done in [Jest's setup step](https://facebook.github.io/jest/docs/en/setup-teardown.html)
 
