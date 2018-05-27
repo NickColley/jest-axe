@@ -19,9 +19,6 @@
   ],
   "author": "Nick Colley",
   "license": "MIT",
-  "engines": {
-    "node": ">= 8.0.0"
-  },
   "dependencies": {
     "axe-core": "3.0.2",
     "jest-matcher-utils": "23.0.1",
