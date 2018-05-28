@@ -1,3 +1,10 @@
+# 3.0.0
+
+- Allow Node.js 6.x to use jest-axe - [(PR #40)](https://github.com/nickcolley/jest-axe/pull/40)
+
+Breaking changes:
+- Update axe-core to 3.x - [(PR #39)](https://github.com/nickcolley/jest-axe/pull/39)
+
 # 2.1.4
 
 - Only publish index.js - [(PR #22)](https://github.com/nickcolley/jest-axe/pull/22)
