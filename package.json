@@ -1,6 +1,6 @@
 {
   "name": "jest-axe",
-  "version": "2.1.4",
+  "version": "3.0.0",
   "description": "Custom Jest matcher for aXe for testing accessibility",
   "repository": "nickcolley/jest-axe",
   "main": "index.js",
