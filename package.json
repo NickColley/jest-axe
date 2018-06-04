@@ -23,7 +23,7 @@
     "node": ">= 6.0.0"
   },
   "dependencies": {
-    "axe-core": "3.0.2",
+    "axe-core": "3.0.3",
     "jest-matcher-utils": "23.0.1",
     "lodash.merge": "4.6.1"
   },
