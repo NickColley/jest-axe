@@ -30,7 +30,7 @@
   "devDependencies": {
     "async-to-gen": "^1.4.0",
     "jest": "23.0.1",
-    "react": "16.4.0",
+    "react": "16.4.1",
     "react-dom": "16.4.0"
   },
   "jest": {
