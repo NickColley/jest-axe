@@ -11,7 +11,7 @@ Received:
 
 [31m\\"Images must have alternate text (image-alt)\\"[39m
 
-Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.0/image-alt?application=axeAPI"
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI"
 `;
 
 exports[`jest-axe readme readme react example renders correctly 1`] = `
@@ -25,7 +25,7 @@ Received:
 
 [31m\\"Images must have alternate text (image-alt)\\"[39m
 
-Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.0/image-alt?application=axeAPI"
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI"
 `;
 
 exports[`jest-axe toHaveNoViolations returns correctly formatted message when violations are present 1`] = `
@@ -57,7 +57,7 @@ Received:
 
 [31m\\"Images must have alternate text (image-alt)\\"[39m
 
-Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.0/image-alt?application=axeAPI
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI
 
 ────────
 
@@ -69,7 +69,7 @@ Received:
 
 [31m\\"Form elements must have labels (label)\\"[39m
 
-Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.0/label?application=axeAPI
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.1/label?application=axeAPI
 
 ────────
 
@@ -85,7 +85,7 @@ Received:
 
 [31m\\"Links must have discernible text (link-name)\\"[39m
 
-Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.0/link-name?application=axeAPI
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.1/link-name?application=axeAPI
 
 ────────
 
@@ -101,5 +101,5 @@ Received:
 
 [31m\\"The skip-link target should exist and be focusable (skip-link)\\"[39m
 
-Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.0/skip-link?application=axeAPI"
+Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.1/skip-link?application=axeAPI"
 `;
