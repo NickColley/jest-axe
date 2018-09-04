@@ -1,3 +1,8 @@
+# 3.1.0
+
+- Add extend-expect file - [(PR #44)](https://github.com/nickcolley/jest-axe/pull/44) Thanks @kentcdodds
+- Update axe-core to v3.1.1, update jest-matcher-utils to 23.5.0
+
 # 3.0.0
 
 - Allow Node.js 6.x to use jest-axe - [(PR #40)](https://github.com/nickcolley/jest-axe/pull/40)
