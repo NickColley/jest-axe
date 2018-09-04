@@ -40,7 +40,7 @@ it('should demonstrate this matcher`s usage', async () => {
 
 ![Screenshot of the resulting output from the usage example](example-cli.png)
 
-> Note, you can also simply require `'jest-axe/extend-expect'` which will call `expect.extend` for you.
+> Note, you can also require `'jest-axe/extend-expect'` which will call `expect.extend` for you.
 > This is especially helpful when using the jest `setupTestFrameworkScriptFile` configuration.
 
 ### With React
