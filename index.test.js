@@ -57,6 +57,11 @@ describe('jest-axe', () => {
       expect(typeof results.violations).toBe('object')
     })
 
+    it('clears the document body after recieving axe results', async () => {
+      await axe(failingHtmlExample)
+      expect(document.body.innerHTML).toBe('')
+    })
+
     it('returns violations for failing html example', async () => {
       const results = await axe(failingHtmlExample)
       const violation = results.violations[0]
