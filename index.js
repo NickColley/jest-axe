@@ -37,6 +37,7 @@ function configureAxe (defaultOptions = {}) {
     return new Promise((resolve, reject) => {
       axeCore.run(document.body, options, (err, results) => {
         if (err) throw err
+        document.body.innerHTML = ''
         resolve(results)
       })
     })
