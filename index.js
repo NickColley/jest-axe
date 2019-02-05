@@ -29,6 +29,13 @@ function configureAxe (defaultOptions = {}) {
       throw new Error(`html parameter ("${html}") has no elements`)
     }
 
+    // Before we use Jests's jsdom document we store and remove all child nodes from the body.
+    const bodyChilds = document.createElement('div');
+    document.body.childNodes.forEach(child => {
+      document.body.removeChild(child)
+      bodyChilds.appendChild(child)
+    })
+
     // aXe requires real Nodes so we need to inject into Jests' jsdom document.
     document.body.innerHTML = html
 
@@ -36,8 +43,14 @@ function configureAxe (defaultOptions = {}) {
 
     return new Promise((resolve, reject) => {
       axeCore.run(document.body, options, (err, results) => {
-        if (err) throw err
+        // In any case we restore the contents of the body by appending its childs again.
         document.body.innerHTML = ''
+        bodyChilds.childNodes.forEach(child => {
+          bodyChilds.remove(child)
+          document.body.appendChild(child)
+        })
+
+        if (err) throw err
         resolve(results)
       })
     })
