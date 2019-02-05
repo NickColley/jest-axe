@@ -57,9 +57,11 @@ describe('jest-axe', () => {
       expect(typeof results.violations).toBe('object')
     })
 
-    it('clears the document body after recieving axe results', async () => {
-      await axe(failingHtmlExample)
-      expect(document.body.innerHTML).toBe('')
+    it('should not mutate the content of document.body permanently', async () => {
+      const el = document.body.appendChild(document.createElement("div"))
+      await axe(goodHtmlExample)
+      expect(document.body.childElementCount).toBe(1);
+      expect(document.body.firstChild).toBe(el);
     })
 
     it('returns violations for failing html example', async () => {
