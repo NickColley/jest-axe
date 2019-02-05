@@ -1,3 +1,7 @@
+# 3.1.1
+
+- Ensure that jest-axe cleans up the document after it runs [(Issue #50)](https://github.com/nickcolley/jest-axe/issues/50) Thanks @thomasheyenbrock and @camdub !
+
 # 3.1.0
 
 - Add extend-expect file - [(PR #44)](https://github.com/nickcolley/jest-axe/pull/44) Thanks @kentcdodds
