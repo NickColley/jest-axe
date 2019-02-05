@@ -30,25 +30,18 @@ function configureAxe (defaultOptions = {}) {
     }
 
     // Before we use Jests's jsdom document we store and remove all child nodes from the body.
-    const bodyChilds = document.createElement('div');
-    document.body.childNodes.forEach(child => {
-      document.body.removeChild(child)
-      bodyChilds.appendChild(child)
-    })
+    const axeContainer = document.createElement('div');
+    axeContainer.innerHTML = html
 
     // aXe requires real Nodes so we need to inject into Jests' jsdom document.
-    document.body.innerHTML = html
+    document.body.appendChild(axeContainer)
 
     const options = merge({}, defaultOptions, additionalOptions)
 
     return new Promise((resolve, reject) => {
-      axeCore.run(document.body, options, (err, results) => {
-        // In any case we restore the contents of the body by appending its childs again.
-        document.body.innerHTML = ''
-        bodyChilds.childNodes.forEach(child => {
-          bodyChilds.remove(child)
-          document.body.appendChild(child)
-        })
+      axeCore.run(axeContainer, options, (err, results) => {
+        // In any case we restore the contents of the body by removing the additional element again.
+        document.body.removeChild(axeContainer)
 
         if (err) throw err
         resolve(results)
