@@ -64,6 +64,9 @@ it('should demonstrate this matcher`s usage with react', async () => {
 })
 ```
 
+> Note, if you're using `react-testing-library` you should be using
+> [`cleanup`](https://testing-library.com/docs/react-testing-library/api#cleanup).
+
 ### Axe configuration
 
 The `axe` function allows options to be set with the [same options as documented in axe-core](https://github.com/dequelabs/axe-core/blob/develop-2x/doc/API.md#options-parameter):
