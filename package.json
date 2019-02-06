@@ -32,7 +32,7 @@
     "async-to-gen": "1.4.0",
     "jest": "24.1.0",
     "react": "16.8.0",
-    "react-dom": "16.7.0"
+    "react-dom": "16.8.0"
   },
   "jest": {
     "transform": {
