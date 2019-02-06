@@ -29,25 +29,71 @@ function configureAxe (defaultOptions = {}) {
       throw new Error(`html parameter ("${html}") has no elements`)
     }
 
-    // Before we use Jests's jsdom document we store and remove all child nodes from the body.
-    const axeContainer = document.createElement('div');
-    axeContainer.innerHTML = html
-
-    // aXe requires real Nodes so we need to inject into Jests' jsdom document.
-    document.body.appendChild(axeContainer)
-
     const options = merge({}, defaultOptions, additionalOptions)
 
-    return new Promise((resolve, reject) => {
-      axeCore.run(axeContainer, options, (err, results) => {
-        // In any case we restore the contents of the body by removing the additional element again.
-        document.body.removeChild(axeContainer)
+    // If there's a puppeteer instance use that for more test coverage (including color contrast checks)
+    if (options.puppeteer) {
+      const browser = options.puppeteer.browser
+      delete options.puppeteer
+      return runInPuppeteer(html, browser, options)
+    }
 
-        if (err) throw err
-        resolve(results)
-      })
-    })
+    return runInJSDom(html, options)
   }
+}
+
+function runInJSDom (html, options) {
+  // Before we use Jests's jsdom document we store and remove all child nodes from the body.
+  const axeContainer = document.createElement('div');
+  axeContainer.innerHTML = html
+
+  // aXe requires real Nodes so we need to inject into Jests' jsdom document.
+  document.body.appendChild(axeContainer)
+
+  return new Promise((resolve, reject) => {
+    axeCore.run(axeContainer, options, (err, results) => {
+      // In any case we restore the contents of the body by removing the additional element again.
+      document.body.removeChild(axeContainer)
+
+      if (err) {
+        return reject(err)
+      }
+      resolve(results)
+    })
+  })
+}
+
+function runInPuppeteer (html, browser, options) {
+  return (
+    browser.newPage().then(page => {
+      return (
+        page.setContent(html)
+          .then(() => {
+            return page.addScriptTag({ path: require.resolve('axe-core') })
+          })
+          .then(() => {
+            return page.evaluate((stringifiedOptions) => {
+              return new Promise((resolve, reject) => {
+                  const axeContainer = document.documentElement
+                  const options = JSON.parse(stringifiedOptions)
+                  window.axe.run(axeContainer, options, (err, results) => {
+                      if (err) {
+                        return reject(err)
+                      }
+                      resolve(results)
+                  })
+              })
+            }, JSON.stringify(options))
+          })
+          .then((results) => {
+            return page.close().then(() => results)
+          })
+          .catch(error => {
+            throw error
+          })
+      )
+    })
+  )
 }
 
 /**

@@ -1,30 +1,49 @@
 /* eslint-env jest */
 
 const { configureAxe, axe, toHaveNoViolations } = require('./index.js')
+const puppeteer = require('puppeteer')
 
 describe('jest-axe', () => {
   describe('axe', () => {
     const failingHtmlExample = `
-     <html>
+     <html lang="en">
+       <head>
+        <title>Failing HTML Example</title>
+       </head>
        <body>
-         <a href="#"></a>
+        <main>
+          <h1>Failing HTML Example</h1> 
+          <a href="#"></a>
+        </main>
        </body>
      </html>
     `
 
     const failingExtendedHtmlExample = `
-     <html>
+     <html lang="en">
+       <head>
+        <title>Failing Extended HTML Example</title>
+       </head>
        <body>
-         <a href="#"></a>
-         <img src="#"/>
+        <main>
+          <h1>Failing Extended HTML Example</h1>
+          <a href="#"></a>
+          <img src="#"/>
+        </main>
        </body>
      </html>
     `
 
     const goodHtmlExample = `
-     <html>
+     <html lang="en">
+       <head>
+        <title>Good HTML Example</title>
+       </head>
        <body>
-         <a href="http://gov.uk">Visit GOV.UK</a>
+        <main>
+          <h1>Good HTML Example</h1>
+          <a href="http://gov.uk">Visit GOV.UK</a>
+        </main>
        </body>
      </html>
     `
@@ -126,6 +145,43 @@ describe('jest-axe', () => {
       const violation = results.violations[0]
       expect(violation.id).toBe('link-name')
       expect(violation.description).toBe('Ensures links have discernible text')
+    })
+    describe('puppeteer', async () => {
+      let browser
+      let puppeteerAxe
+      beforeAll(async () => {
+        browser = await puppeteer.launch();
+      })
+      beforeEach(async () => {
+        puppeteerAxe = configureAxe({
+          puppeteer: {
+            browser
+          }
+        })
+      })
+      afterAll(async () => {
+        await browser.close();
+      })
+      it('returns no violations for a good html example', async () => {
+        const results = await puppeteerAxe(goodHtmlExample)
+        const violations = results.violations
+        expect(violations.length).toBe(0)
+      })
+      it('returns violations for failing html example', async () => {
+        const results = await puppeteerAxe(failingHtmlExample)
+        const violation = results.violations[0]
+        expect(violation.id).toBe('link-name')
+        expect(violation.description).toBe('Ensures links have discernible text')
+      })
+      it('can ignore allowed failures', async () => {
+        const results = await puppeteerAxe(failingHtmlExample, {
+          rules: {
+            'link-name': { enabled: false }
+          }
+        })
+        const violations = results.violations
+        expect(violations.length).toBe(0)
+      })
     })
   })
   describe('toHaveNoViolations', () => {
