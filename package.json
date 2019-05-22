@@ -32,7 +32,8 @@
     "async-to-gen": "1.4.0",
     "jest": "24.1.0",
     "react": "16.7.0",
-    "react-dom": "16.7.0"
+    "react-dom": "16.7.0",
+    "react-testing-library": "^7.0.1"
   },
   "jest": {
     "transform": {
