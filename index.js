@@ -1,7 +1,8 @@
 'use strict'
-
 const axeCore = require('axe-core')
 const merge = require('lodash.merge')
+const { isValidElement } = require('react')
+const ReactDOMServer = require('react-dom/server')
 const { printReceived, matcherHint } = require('jest-matcher-utils')
 
 /**
@@ -19,22 +20,30 @@ function configureAxe (defaultOptions = {}) {
    * @returns {promise} returns promise that will resolve with axe-core#run results object
    */
   return function axe (html, additionalOptions = {}) {
-    const htmlType = (typeof html)
-    if (htmlType !== 'string') {
+    let axeContainer
+    if (isValidElement(html)) {
+      html = ReactDOMServer.renderToString(html)
+    }
+    const htmlType = typeof html
+    if (htmlType === 'string') {
+      const hasHtmlElements = /(<([^>]+)>)/i.test(html)
+      if (!hasHtmlElements) {
+        throw new Error(`html parameter ("${html}") has no elements`)
+      }
+
+      // Before we use Jests's jsdom document we store and remove all child nodes from the body.
+      axeContainer = document.createElement('div');
+      axeContainer.innerHTML = html
+      // aXe requires real Nodes so we need to inject into Jests' jsdom document.
+      document.body.appendChild(axeContainer)
+    }
+    else if (htmlType === 'object' && html._reactRootContainer) {
+      // Render react-testing-component dom object directly
+      axeContainer = html
+    }
+    else if (htmlType !== 'string') {
       throw new Error(`html parameter should be a string not a ${htmlType}`)
     }
-
-    const hasHtmlElements = /(<([^>]+)>)/i.test(html)
-    if (!hasHtmlElements) {
-      throw new Error(`html parameter ("${html}") has no elements`)
-    }
-
-    // Before we use Jests's jsdom document we store and remove all child nodes from the body.
-    const axeContainer = document.createElement('div');
-    axeContainer.innerHTML = html
-
-    // aXe requires real Nodes so we need to inject into Jests' jsdom document.
-    document.body.appendChild(axeContainer)
 
     const options = merge({}, defaultOptions, additionalOptions)
 
