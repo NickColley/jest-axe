@@ -345,7 +345,7 @@ describe('jest-axe', () => {
 
       const React = require('react')
       const ReactDOMServer = require('react-dom/server')
-      const { render } = require('react-testing-library')
+      const RTL = require('react-testing-library')
 
       it('renders correctly', async () => {
         const html = ReactDOMServer.renderToString(
@@ -370,7 +370,7 @@ describe('jest-axe', () => {
       })
 
       it('renders a react testing library container correctly', async () => {
-        const { container } = render(React.createElement('img', { src: '#' }))
+        const { container } = RTL.render(React.createElement('img', { src: '#' }))
         const results = await axe(container)
 
         expect(() => {
