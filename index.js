@@ -20,7 +20,7 @@ function configureAxe (defaultOptions = {}) {
    * @returns {promise} returns promise that will resolve with axe-core#run results object
    */
   return function axe (html, additionalOptions = {}) {
-    let axeContainer
+    let axeContainer, addedToDOM
     if (isValidElement(html)) {
       html = ReactDOMServer.renderToString(html)
     }
@@ -36,6 +36,7 @@ function configureAxe (defaultOptions = {}) {
       axeContainer.innerHTML = html
       // aXe requires real Nodes so we need to inject into Jests' jsdom document.
       document.body.appendChild(axeContainer)
+      addedToDOM = true
     }
     else if (htmlType === 'object' && html._reactRootContainer) {
       // Render react-testing-component dom object directly
@@ -50,7 +51,7 @@ function configureAxe (defaultOptions = {}) {
     return new Promise((resolve, reject) => {
       axeCore.run(axeContainer, options, (err, results) => {
         // In any case we restore the contents of the body by removing the additional element again.
-        document.body.removeChild(axeContainer)
+        addedToDOM && document.body.removeChild(axeContainer)
 
         if (err) throw err
         resolve(results)
