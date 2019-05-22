@@ -87,7 +87,7 @@ describe('jest-axe', () => {
       expect(violations.length).toBe(0)
     })
 
-    it('throws with non-string input', () => {
+    it('throws if input is not a string, react element, or react-testing-library render', () => {
       expect(() => {
         axe({})
       }).toThrow('html parameter should be a string not a object')
@@ -345,6 +345,7 @@ describe('jest-axe', () => {
 
       const React = require('react')
       const ReactDOMServer = require('react-dom/server')
+      const { render } = require('react-testing-library')
 
       it('renders correctly', async () => {
         const html = ReactDOMServer.renderToString(
@@ -352,6 +353,25 @@ describe('jest-axe', () => {
         )
 
         const results = await axe(html)
+
+        expect(() => {
+          expect(results).toHaveNoViolations()
+        }).toThrowErrorMatchingSnapshot()
+      })
+
+      it('renders a react element correctly', async () => {
+        const results = await axe(
+          React.createElement('img', { src: '#' })
+        )
+
+        expect(() => {
+          expect(results).toHaveNoViolations()
+        }).toThrowErrorMatchingSnapshot()
+      })
+
+      it('renders a react element correctly', async () => {
+        const { container } = render(React.createElement('img', { src: '#' }))
+        const results = await axe(container)
 
         expect(() => {
           expect(results).toHaveNoViolations()
