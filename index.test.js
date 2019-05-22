@@ -369,7 +369,7 @@ describe('jest-axe', () => {
         }).toThrowErrorMatchingSnapshot()
       })
 
-      it('renders a react element correctly', async () => {
+      it('renders a react testing library container correctly', async () => {
         const { container } = render(React.createElement('img', { src: '#' }))
         const results = await axe(container)
 
