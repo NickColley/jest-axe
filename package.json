@@ -38,6 +38,9 @@
   "jest": {
     "transform": {
       "^.+\\.js$": "async-to-gen"
-    }
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-testing-library)/)"
+    ]
   }
 }
