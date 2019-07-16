@@ -24,15 +24,15 @@
     "node": ">= 6.0.0"
   },
   "dependencies": {
-    "axe-core": "3.1.2",
-    "jest-matcher-utils": "24.0.0",
-    "lodash.merge": "4.6.1"
+    "axe-core": "^3.1.2",
+    "jest-matcher-utils": "^24.0.0",
+    "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
-    "async-to-gen": "1.4.0",
-    "jest": "24.1.0",
-    "react": "16.7.0",
-    "react-dom": "16.7.0"
+    "async-to-gen": "^1.4.0",
+    "jest": "^24.1.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   },
   "jest": {
     "transform": {
