@@ -40,7 +40,7 @@
       "^.+\\.js$": "async-to-gen"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(react-testing-library)/)"
+      "node_modules/(?!(@testing-library/react)/)"
     ]
   }
 }
