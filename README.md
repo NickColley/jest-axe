@@ -47,14 +47,14 @@ it('should demonstrate this matcher`s usage', async () => {
 
 ```javascript
 const { axe, toHaveNoViolations } = require('jest-axe')
+const App = require('./app)
 
 expect.extend(toHaveNoViolations)
 
 const React = require('react')
 
 it('should demonstrate this matcher`s usage with react', async () => {
-  const html = React.createElement('img', { src: '#' })
-  const results = await axe(html)
+  const results = await axe(<App/>)
   expect(results).toHaveNoViolations()
 })
 ```
