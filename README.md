@@ -51,20 +51,31 @@ const { axe, toHaveNoViolations } = require('jest-axe')
 expect.extend(toHaveNoViolations)
 
 const React = require('react')
-const ReactDOMServer = require('react-dom/server')
 
 it('should demonstrate this matcher`s usage with react', async () => {
-  const html = ReactDOMServer.renderToString(
-    <img src='#' />
-  )
-
+  const html = React.createElement('img', { src: '#' })
   const results = await axe(html)
-
   expect(results).toHaveNoViolations()
 })
 ```
 
-> Note, if you're using `react-testing-library` you should be using
+### With React Testing Library
+
+```javascript
+const { axe, toHaveNoViolations } = require('jest-axe')
+const { render } = require('@testing-library/react')
+const App = require('./app)
+
+expect.extend(toHaveNoViolations)
+
+it('should demonstrate this matcher`s usage with react testing library', async () => {
+  const { container } = render(<App/>)
+  const results = await axe(container)
+  expect(results).toHaveNoViolations()
+})
+```
+
+> Note, if you're using `react testing library` you should be using
 > [`cleanup`](https://testing-library.com/docs/react-testing-library/api#cleanup).
 
 ### Axe configuration
