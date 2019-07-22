@@ -345,7 +345,7 @@ describe('jest-axe', () => {
 
       const React = require('react')
       const ReactDOMServer = require('react-dom/server')
-      const RTL = require('react-testing-library')
+      const RTL = require('@testing-library/react')
 
       it('renders correctly', async () => {
         const html = ReactDOMServer.renderToString(
