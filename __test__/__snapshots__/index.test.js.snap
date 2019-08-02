@@ -14,48 +14,6 @@ Received:
 Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI"
 `;
 
-exports[`jest-axe readme readme react example renders a react element correctly 1`] = `
-"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
-
-Expected the HTML found at $('img') to have no violations:
-
-<img src=\\"#\\" data-reactroot=\\"\\">
-
-Received:
-
-[31m\\"Images must have alternate text (image-alt)\\"[39m
-
-Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI"
-`;
-
-exports[`jest-axe readme readme react example renders a react testing library container correctly 1`] = `
-"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
-
-Expected the HTML found at $('img') to have no violations:
-
-<img src=\\"#\\">
-
-Received:
-
-[31m\\"Images must have alternate text (image-alt)\\"[39m
-
-Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI"
-`;
-
-exports[`jest-axe readme readme react example renders correctly 1`] = `
-"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
-
-Expected the HTML found at $('img') to have no violations:
-
-<img src=\\"#\\" data-reactroot=\\"\\">
-
-Received:
-
-[31m\\"Images must have alternate text (image-alt)\\"[39m
-
-Try fixing it with this help: https://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI"
-`;
-
 exports[`jest-axe toHaveNoViolations returns correctly formatted message when violations are present 1`] = `
 "[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
 

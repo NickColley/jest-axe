@@ -1,9 +1,9 @@
 'use strict'
 const axeCore = require('axe-core')
 const merge = require('lodash.merge')
-const { isValidElement } = require('react')
-const ReactDOMServer = require('react-dom/server')
 const { printReceived, matcherHint } = require('jest-matcher-utils')
+const { renderToString: renderReactNodeToString } = require('react-dom/server')
+const { renderToString: renderVueNodeToString } = require('@vue/server-test-utils')
 
 /**
  * Small wrapper for axe-core#run that enables promises (required for Jest),
@@ -21,9 +21,15 @@ function configureAxe (defaultOptions = {}) {
    */
   return function axe (html, additionalOptions = {}) {
     let axeContainer, addedToDOM
-    if (isValidElement(html)) {
-      html = ReactDOMServer.renderToString(html)
+    
+    if (isReactElement(html)) {
+      html = renderReactNodeToString(html)
     }
+
+    if (isVueElement(html)) {
+      html = renderVueNodeToString(html)
+    }
+
     const htmlType = typeof html
     if (htmlType === 'string') {
       const hasHtmlElements = /(<([^>]+)>)/i.test(html)
@@ -38,7 +44,8 @@ function configureAxe (defaultOptions = {}) {
       document.body.appendChild(axeContainer)
       addedToDOM = true
     }
-    else if (htmlType === 'object' && html._reactRootContainer) {
+    // Check for React Testing Library Container
+    else if (isReactTestingLibraryContainer(html)) {
       // Render react-testing-component dom object directly
       axeContainer = html
     }
@@ -119,6 +126,28 @@ const toHaveNoViolations = {
     return { actual: violations, message, pass }
   }
 }
+
+/**
+ * Custom util for identifying if the submitted html is a React element
+ * @param {string} html requires a html string to be injected into the body
+ * @returns {boolean} returns true or false
+ */
+const isReactElement = html => !!html.$$typeof && /react/i.test(String(html.$$typeof))
+
+/**
+ * Custom util for identifying if the submitted html is a React Testing Library container
+ * @param {string} html requires a html string to be injected into the body
+ * @returns {boolean} returns true or false
+ */
+const isReactTestingLibraryContainer = html => typeof html === 'object' && html._reactRootContainer
+
+/**
+ * Custom util for identifying if the submitted html is a Vue element
+ * @param {string} html requires a html string to be injected into the body
+ * @returns {boolean} returns true or false
+ */
+const isVueElement = html => typeof html === 'object' && html.staticRenderFns
+
 
 module.exports = {
   configureAxe,

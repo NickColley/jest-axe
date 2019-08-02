@@ -78,6 +78,39 @@ it('should demonstrate this matcher`s usage with react testing library', async (
 > Note, if you're using `react testing library` you should be using
 > [`cleanup`](https://testing-library.com/docs/react-testing-library/api#cleanup).
 
+
+### With Vue
+
+
+
+```javascript
+// Image.vue
+<template>
+  <img :src="src" />
+</template>
+<script>
+module.exports = {
+  data: () => {
+    return {
+      src: '#'
+    }
+  }
+}
+</script>
+
+
+// Image.test.js
+const { axe, toHaveNoViolations } = require('jest-axe')
+const Image = require('./Image.vue')
+
+expect.extend(toHaveNoViolations)
+
+it('should demonstrate this matcher`s usage with vue', async () => {
+  const results = await axe(Image)
+  expect(results).toHaveNoViolations()
+})
+```
+
 ### Axe configuration
 
 The `axe` function allows options to be set with the [same options as documented in axe-core](https://github.com/dequelabs/axe-core/blob/develop-2x/doc/API.md#options-parameter):

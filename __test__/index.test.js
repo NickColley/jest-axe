@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-const { configureAxe, axe, toHaveNoViolations } = require('./index.js')
+const { configureAxe, axe, toHaveNoViolations } = require('../index.js')
 
 describe('jest-axe', () => {
   describe('axe', () => {
@@ -128,6 +128,7 @@ describe('jest-axe', () => {
       expect(violation.description).toBe('Ensures links have discernible text')
     })
   })
+
   describe('toHaveNoViolations', () => {
     const failingAxeResults = {
       violations: [
@@ -264,7 +265,6 @@ describe('jest-axe', () => {
   })
   describe('readme', () => {
     describe('first readme example', () => {
-      const { axe, toHaveNoViolations } = require('jest-axe')
 
       expect.extend(toHaveNoViolations)
 
@@ -282,7 +282,6 @@ describe('jest-axe', () => {
       })
     })
     describe('readme axe config example', () => {
-      const { axe, toHaveNoViolations } = require('jest-axe')
 
       expect.extend(toHaveNoViolations)
 
@@ -308,7 +307,6 @@ describe('jest-axe', () => {
     })
     describe('readme axe global config example', () => {
       // Global helper file (axe-helper.js)
-      const { configureAxe } = require('jest-axe')
 
       const configuredAxe = configureAxe({
         rules: {
@@ -320,7 +318,6 @@ describe('jest-axe', () => {
       const exportedAxe = configuredAxe
 
       // Individual test file (test.js)
-      const { toHaveNoViolations } = require('jest-axe')
       const axe = exportedAxe // require('./axe-helper.js')
 
       expect.extend(toHaveNoViolations)
@@ -336,46 +333,6 @@ describe('jest-axe', () => {
         const html = render()
 
         expect(await axe(html)).toHaveNoViolations()
-      })
-    })
-    describe('readme react example', () => {
-      const { axe, toHaveNoViolations } = require('jest-axe')
-
-      expect.extend(toHaveNoViolations)
-
-      const React = require('react')
-      const ReactDOMServer = require('react-dom/server')
-      const { render } = require('@testing-library/react')
-
-      it('renders correctly', async () => {
-        const html = ReactDOMServer.renderToString(
-          React.createElement('img', { src: '#' })
-        )
-
-        const results = await axe(html)
-
-        expect(() => {
-          expect(results).toHaveNoViolations()
-        }).toThrowErrorMatchingSnapshot()
-      })
-
-      it('renders a react element correctly', async () => {
-        const results = await axe(
-          React.createElement('img', { src: '#' })
-        )
-
-        expect(() => {
-          expect(results).toHaveNoViolations()
-        }).toThrowErrorMatchingSnapshot()
-      })
-
-      it('renders a react testing library container correctly', async () => {
-        const { container } = render(React.createElement('img', { src: '#' }))
-        const results = await axe(container)
-
-        expect(() => {
-          expect(results).toHaveNoViolations()
-        }).toThrowErrorMatchingSnapshot()
       })
     })
   })
