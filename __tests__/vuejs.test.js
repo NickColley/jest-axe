@@ -1,16 +1,18 @@
 const { axe, toHaveNoViolations } = require('../index')
 
-expect.extend(toHaveNoViolations)
+const { mount } = require("@vue/test-utils");
 
-const Image = require('./Image.vue')
+expect.extend(toHaveNoViolations)
 
 describe('Vue', () => {
   it('renders correctly', async () => {
-
-    let results = await axe(Image)
+    const Image = require('./Image.vue')
+    const wrapper = mount(Image)
+    const results = await axe(wrapper.element);
     
     expect(() => {
       expect(results).toHaveNoViolations()
     }).toThrowErrorMatchingSnapshot()
   })
+
 })

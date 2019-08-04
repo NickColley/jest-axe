@@ -3,9 +3,9 @@
 exports[`Vue renders correctly 1`] = `
 "[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
 
-Expected the HTML found at $('img') to have no violations:
+Expected the HTML found at $('#test-image') to have no violations:
 
-<img src=\\"#\\" data-server-rendered=\\"true\\">
+<img id=\\"test-image\\" src=\\"#\\">
 
 Received:
 

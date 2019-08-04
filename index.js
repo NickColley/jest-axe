@@ -2,8 +2,6 @@
 const axeCore = require('axe-core')
 const merge = require('lodash.merge')
 const { printReceived, matcherHint } = require('jest-matcher-utils')
-const { renderToString: renderReactNodeToString } = require('react-dom/server')
-const { renderToString: renderVueNodeToString } = require('@vue/server-test-utils')
 
 /**
  * Small wrapper for axe-core#run that enables promises (required for Jest),
@@ -20,46 +18,38 @@ function configureAxe (defaultOptions = {}) {
    * @returns {promise} returns promise that will resolve with axe-core#run results object
    */
   return function axe (html, additionalOptions = {}) {
-    let axeContainer, addedToDOM
-    
-    if (isReactElement(html)) {
-      html = renderReactNodeToString(html)
+    let htmlType = typeof html;
+    let originalBodyHTML;
+        
+    // If the passed html value is a DOM node, use the outerHTML of the node
+    if (htmlType === 'object' && !!html.tagName) {
+      html = html.outerHTML
+      htmlType = typeof html;
     }
 
-    if (isVueElement(html)) {
-      html = renderVueNodeToString(html)
-    }
-
-    const htmlType = typeof html
     if (htmlType === 'string') {
-      const hasHtmlElements = /(<([^>]+)>)/i.test(html)
-      if (!hasHtmlElements) {
+      
+      const htmlHasHTMLElements = /(<([^>]+)>)/i.test(html)
+      if (!htmlHasHTMLElements) {
         throw new Error(`html parameter ("${html}") has no elements`)
       }
+      // Before we test the submitted html, we store the document body HTML.
+      originalBodyHTML = document.body.innerHTML
 
-      // Before we use Jests's jsdom document we store and remove all child nodes from the body.
-      axeContainer = document.createElement('div');
-      axeContainer.innerHTML = html
-      // aXe requires real Nodes so we need to inject into Jests' jsdom document.
-      document.body.appendChild(axeContainer)
-      addedToDOM = true
+      // Replace the document body with the submitted html.
+      // We do this to avoid any duplicate code, often from testing libraries, from showing up during out tests
+      document.body.innerHTML = html
     }
-    // Check for React Testing Library Container
-    else if (isReactTestingLibraryContainer(html)) {
-      // Render react-testing-component dom object directly
-      axeContainer = html
-    }
-    else if (htmlType !== 'string') {
+    else {
       throw new Error(`html parameter should be a string not a ${htmlType}`)
     }
 
     const options = merge({}, defaultOptions, additionalOptions)
 
     return new Promise((resolve, reject) => {
-      axeCore.run(axeContainer, options, (err, results) => {
-        // In any case we restore the contents of the body by removing the additional element again.
-        addedToDOM && document.body.removeChild(axeContainer)
-
+      axeCore.run(document.body, options, (err, results) => {
+        // Once we have finished testing the html, we restore the original html body
+        document.body.innerHTML = originalBodyHTML
         if (err) throw err
         resolve(results)
       })
@@ -126,28 +116,6 @@ const toHaveNoViolations = {
     return { actual: violations, message, pass }
   }
 }
-
-/**
- * Custom util for identifying if the submitted html is a React element
- * @param {string} html requires a html string to be injected into the body
- * @returns {boolean} returns true or false
- */
-const isReactElement = html => !!html.$$typeof && /react/i.test(String(html.$$typeof))
-
-/**
- * Custom util for identifying if the submitted html is a React Testing Library container
- * @param {string} html requires a html string to be injected into the body
- * @returns {boolean} returns true or false
- */
-const isReactTestingLibraryContainer = html => typeof html === 'object' && html._reactRootContainer
-
-/**
- * Custom util for identifying if the submitted html is a Vue element
- * @param {string} html requires a html string to be injected into the body
- * @returns {boolean} returns true or false
- */
-const isVueElement = html => typeof html === 'object' && html.staticRenderFns
-
 
 module.exports = {
   configureAxe,

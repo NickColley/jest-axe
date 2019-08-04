@@ -24,23 +24,25 @@
     "node": ">= 6.0.0"
   },
   "dependencies": {
-    "@vue/server-test-utils": "^1.0.0-beta.29",
-    "@vue/test-utils": "^1.0.0-beta.29",
     "axe-core": "3.1.2",
     "jest-matcher-utils": "24.0.0",
-    "lodash.merge": "^4.6.2",
-    "vue-server-renderer": "^2.6.10",
-    "vue-template-compiler": "^2.6.10",
-    "vue": "^2.6.10",
-    "react-dom": "16.7.0"
+    "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
     "@testing-library/react": "^8.0.5",
+    "@vue/server-test-utils": "^1.0.0-beta.29",
+    "@vue/test-utils": "^1.0.0-beta.29",
     "async-to-gen": "1.4.0",
     "babel-core": "^6.26.3",
+    "babel-jest": "^24.8.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "jest": "24.1.0",
     "react": "16.7.0",
-    "vue-jest": "^3.0.4"
+    "react-dom": "^16.8.6",
+    "vue": "^2.6.10",
+    "vue-jest": "^3.0.4",
+    "vue-template-compiler": "^2.6.10"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -54,7 +56,8 @@
     ],
     "transform": {
       "^.+\\.js$": "async-to-gen",
-      "^.+\\.vue$": "vue-jest"
+      "^.+\\.vue$": "vue-jest",
+      "\\.js$": "<rootDir>/node_modules/babel-jest"
     },
     "transformIgnorePatterns": [
       "node_modules/(?!(@testing-library/react)/)"

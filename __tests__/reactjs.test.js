@@ -2,17 +2,14 @@ const { axe, toHaveNoViolations } = require('../index')
 
 const React = require('react')
 const ReactDOMServer = require('react-dom/server')
-const { render } = require('@testing-library/react')
 
 expect.extend(toHaveNoViolations)
 
 describe('React', () => {
 
-  it('renders correctly', async () => {
-    const html = ReactDOMServer.renderToString(
-      React.createElement('img', { src: '#' })
-    )
-
+  test('renders correctly', async () => {
+    const element = React.createElement('img', { src: '#' });
+    const html = ReactDOMServer.renderToString(element)
     const results = await axe(html)
 
     expect(() => {
@@ -20,22 +17,41 @@ describe('React', () => {
     }).toThrowErrorMatchingSnapshot()
   })
 
-  it('renders a react element correctly', async () => {
-    const results = await axe(
-      React.createElement('img', { src: '#' })
-    )
+  test('renders a react testing library container correctly', async () => {
+    const { render } = require('@testing-library/react')
 
-    expect(() => {
-      expect(results).toHaveNoViolations()
-    }).toThrowErrorMatchingSnapshot()
-  })
-
-  it('renders a react testing library container correctly', async () => {
-    const { container } = render(React.createElement('img', { src: '#' }))
+    const element = React.createElement('img', { src: '#' });
+    const { container } = render(element)
     const results = await axe(container)
 
     expect(() => {
       expect(results).toHaveNoViolations()
     }).toThrowErrorMatchingSnapshot()
   })
+
+  test('renders a react testing library container without duplicate ids', async () => {
+    const { render } = require('@testing-library/react')
+
+    const element = React.createElement('img', { src: '#', alt: 'test', id: 'test' });
+    const { container } = render(element)
+    const results = await axe(container)
+
+    expect(results).toHaveNoViolations()
+  })
+
+  test('renders with enzyme wrapper correctly', async () => {
+    const { mount, configure } = require('enzyme');
+    const Adapter = require('enzyme-adapter-react-16');
+
+    configure({ adapter: new Adapter() });
+    
+    const element = React.createElement('img', { src: '#' });
+    const wrapper = mount(element)
+    const results = await axe(wrapper.getDOMNode())
+
+    expect(() => {
+      expect(results).toHaveNoViolations()
+    }).toThrowErrorMatchingSnapshot()
+  })
+
 })

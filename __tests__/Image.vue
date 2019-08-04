@@ -1,5 +1,5 @@
 <template>
-  <img :src="src" />
+  <img id="test-image" :src="src" />
 </template>
 <script>
 module.exports = {

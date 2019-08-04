@@ -61,7 +61,7 @@ describe('jest-axe', () => {
       const el = document.body.appendChild(document.createElement("div"))
       await axe(goodHtmlExample)
       expect(document.body.childElementCount).toBe(1);
-      expect(document.body.firstChild).toBe(el);
+      expect(document.body.firstChild).toEqual(el);
     })
 
     it('returns violations for failing html example', async () => {
