@@ -90,7 +90,7 @@ describe('jest-axe', () => {
     it('throws if input is not a string, vue element, react element, or react testing library render', () => {
       expect(() => {
         axe({})
-      }).toThrow('html parameter should be a string not a object')
+      }).toThrow('html parameter should be an HTML string or an HTML element')
     })
 
     it('throws with non-html input', () => {

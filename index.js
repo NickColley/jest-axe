@@ -3,6 +3,45 @@ const axeCore = require('axe-core')
 const merge = require('lodash.merge')
 const { printReceived, matcherHint } = require('jest-matcher-utils')
 
+function isHTMLElement (html) {
+  return html && typeof html === 'object' && typeof html.tagName === 'string'
+}
+
+function isHTMLString (html) {
+  return typeof html === 'string' && /(<([^>]+)>)/i.test(html)
+}
+
+/**
+ * Converts an HTML string or HTML element to a mounted HTML element.
+ * @param {Element | string} an HTML element or an HTML string
+ * @returns {[Element, Function]} an HTML element and a function to restore the document
+ */
+function mount (html) {
+  if (isHTMLElement(html)) {
+    if (document.body.contains(html)) {
+      return [html, () => undefined]
+    }
+
+    html = html.outerHTML
+  }
+
+  if (isHTMLString(html)) {
+    const originalHTML = document.body.innerHTML
+    const restore = () => {
+      document.body.innerHTML = originalHTML
+    }
+
+    document.body.innerHTML = html
+    return [document.body, restore]
+  }
+
+  if (typeof html === 'string') {
+    throw new Error(`html parameter ("${html}") has no elements`)
+  }
+
+  throw new Error(`html parameter should be an HTML string or an HTML element`)
+}
+
 /**
  * Small wrapper for axe-core#run that enables promises (required for Jest),
  * default options and injects html to be tested
@@ -18,38 +57,12 @@ function configureAxe (defaultOptions = {}) {
    * @returns {promise} returns promise that will resolve with axe-core#run results object
    */
   return function axe (html, additionalOptions = {}) {
-    let htmlType = typeof html;
-    let originalBodyHTML;
-        
-    // If the passed html value is a DOM node, use the outerHTML of the node
-    if (htmlType === 'object' && !!html.tagName) {
-      html = html.outerHTML
-      htmlType = typeof html;
-    }
-
-    if (htmlType === 'string') {
-      
-      const htmlHasHTMLElements = /(<([^>]+)>)/i.test(html)
-      if (!htmlHasHTMLElements) {
-        throw new Error(`html parameter ("${html}") has no elements`)
-      }
-      // Before we test the submitted html, we store the document body HTML.
-      originalBodyHTML = document.body.innerHTML
-
-      // Replace the document body with the submitted html.
-      // We do this to avoid any duplicate code, often from testing libraries, from showing up during out tests
-      document.body.innerHTML = html
-    }
-    else {
-      throw new Error(`html parameter should be a string not a ${htmlType}`)
-    }
-
+    const [element, restore] = mount(html)
     const options = merge({}, defaultOptions, additionalOptions)
 
     return new Promise((resolve, reject) => {
-      axeCore.run(document.body, options, (err, results) => {
-        // Once we have finished testing the html, we restore the original html body
-        document.body.innerHTML = originalBodyHTML
+      axeCore.run(element, options, (err, results) => {
+        restore()
         if (err) throw err
         resolve(results)
       })
