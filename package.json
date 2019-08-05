@@ -34,35 +34,12 @@
     "@testing-library/vue": "^1.2.0",
     "@vue/server-test-utils": "^1.0.0-beta.29",
     "@vue/test-utils": "^1.0.0-beta.29",
-    "async-to-gen": "1.4.0",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^24.8.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jest": "24.1.0",
     "react": "16.7.0",
     "react-dom": "^16.8.6",
     "vue": "^2.6.10",
-    "vue-jest": "^3.0.4",
     "vue-template-compiler": "^2.6.10"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "jsx",
-      "ts",
-      "tsx",
-      "node",
-      "vue"
-    ],
-    "transform": {
-      "^.+\\.js$": "async-to-gen",
-      "^.+\\.vue$": "vue-jest",
-      "\\.js$": "<rootDir>/node_modules/babel-jest"
-    },
-    "transformIgnorePatterns": [
-      "node_modules/(?!(@testing-library/react)/)"
-    ]
   }
 }
