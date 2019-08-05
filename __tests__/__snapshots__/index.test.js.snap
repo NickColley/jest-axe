@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`jest-axe readme first readme example should demonstrate this matcher\`s usage 1`] = `
+"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
+
+Expected the HTML found at $('img') to have no violations:
+
+[90m<img src=\\"#\\">[39m
+
+Received:
+
+[31m\\"Images must have alternate text (image-alt)\\"[39m
+
+[33mFix any of the following:[39m
+[33m  Element does not have an alt attribute[39m
+[33m  aria-label attribute does not exist or is empty[39m
+[33m  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty[39m
+[33m  Element has no title attribute or the title attribute is empty[39m
+[33m  Element's default semantics were not overridden with role=\\"presentation\\"[39m
+[33m  Element's default semantics were not overridden with role=\\"none\\"[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI[39m"
+`;
+
+exports[`jest-axe toHaveNoViolations returns correctly formatted message when violations are present 1`] = `
+"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
+
+Expected the HTML found at $('body > img') to have no violations:
+
+[90m<img src=\\"\\">[39m
+
+Received:
+
+[31m\\"Images must have alternate text (image-alt)\\"[39m
+
+[33mFix any of the following:[39m
+[33m  Element does not have an alt attribute[39m
+[33m  aria-label attribute does not exist or is empty[39m
+[33m  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible[39m
+[33m  Element has no title attribute or the title attribute is empty[39m
+[33m  Element's default semantics were not overridden with role=\\"presentation\\"[39m
+[33m  Element's default semantics were not overridden with role=\\"none\\"[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/2.6/image-alt?application=axeAPI[39m"
+`;
+
+exports[`jest-axe toHaveNoViolations returns properly formatted text with more complex example 1`] = `
+"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
+
+Expected the HTML found at $('img[src$=\\"example.com\\"]') to have no violations:
+
+[90m<img src=\\"http://example.com\\">[39m
+
+Received:
+
+[31m\\"Images must have alternate text (image-alt)\\"[39m
+
+[33mFix any of the following:[39m
+[33m  Element does not have an alt attribute[39m
+[33m  aria-label attribute does not exist or is empty[39m
+[33m  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty[39m
+[33m  Element has no title attribute or the title attribute is empty[39m
+[33m  Element's default semantics were not overridden with role=\\"presentation\\"[39m
+[33m  Element's default semantics were not overridden with role=\\"none\\"[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI[39m
+
+Expected the HTML found at $('img[src=\\"http://example.com/2\\"]') to have no violations:
+
+[90m<img src=\\"http://example.com/2\\">[39m
+
+Received:
+
+[31m\\"Images must have alternate text (image-alt)\\"[39m
+
+[33mFix any of the following:[39m
+[33m  Element does not have an alt attribute[39m
+[33m  aria-label attribute does not exist or is empty[39m
+[33m  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty[39m
+[33m  Element has no title attribute or the title attribute is empty[39m
+[33m  Element's default semantics were not overridden with role=\\"presentation\\"[39m
+[33m  Element's default semantics were not overridden with role=\\"none\\"[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI[39m
+
+────────
+
+Expected the HTML found at $('input') to have no violations:
+
+[90m<input type=\\"text\\">[39m
+
+Received:
+
+[31m\\"Form elements must have labels (label)\\"[39m
+
+[33mFix any of the following:[39m
+[33m  aria-label attribute does not exist or is empty[39m
+[33m  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty[39m
+[33m  Form element does not have an implicit (wrapped) <label>[39m
+[33m  Form element does not have an explicit <label>[39m
+[33m  Element has no title attribute or the title attribute is empty[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.1/label?application=axeAPI[39m
+
+────────
+
+Expected the HTML found at $('a[href$=\\"#link-name\\"]') to have no violations:
+
+[90m<a href=\\"#link-name\\"></a>[39m
+
+Received:
+
+[31m\\"Links must have discernible text (link-name)\\"[39m
+
+[33mFix all of the following:[39m
+[33m  Element is in tab order and does not have accessible text[39m
+[33m[39m
+[33mFix any of the following:[39m
+[33m  Element does not have text that is visible to screen readers[39m
+[33m  aria-label attribute does not exist or is empty[39m
+[33m  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty[39m
+[33m  Element's default semantics were not overridden with role=\\"presentation\\"[39m
+[33m  Element's default semantics were not overridden with role=\\"none\\"[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.1/link-name?application=axeAPI[39m
+
+Expected the HTML found at $('a[href$=\\"#link-name-2\\"]') to have no violations:
+
+[90m<a href=\\"#link-name-2\\"></a>[39m
+
+Received:
+
+[31m\\"Links must have discernible text (link-name)\\"[39m
+
+[33mFix all of the following:[39m
+[33m  Element is in tab order and does not have accessible text[39m
+[33m[39m
+[33mFix any of the following:[39m
+[33m  Element does not have text that is visible to screen readers[39m
+[33m  aria-label attribute does not exist or is empty[39m
+[33m  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty[39m
+[33m  Element's default semantics were not overridden with role=\\"presentation\\"[39m
+[33m  Element's default semantics were not overridden with role=\\"none\\"[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.1/link-name?application=axeAPI[39m
+
+────────
+
+Expected the HTML found at $('a[href$=\\"#link-name\\"]') to have no violations:
+
+[90m<a href=\\"#link-name\\"></a>[39m
+
+Received:
+
+[31m\\"The skip-link target should exist and be focusable (skip-link)\\"[39m
+
+[33mFix any of the following:[39m
+[33m  No skip link target[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.1/skip-link?application=axeAPI[39m
+
+Expected the HTML found at $('a[href$=\\"#link-name-2\\"]') to have no violations:
+
+[90m<a href=\\"#link-name-2\\"></a>[39m
+
+Received:
+
+[31m\\"The skip-link target should exist and be focusable (skip-link)\\"[39m
+
+[33mFix any of the following:[39m
+[33m  No skip link target[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.1/skip-link?application=axeAPI[39m"
+`;
