@@ -6,7 +6,7 @@ expect.extend(toHaveNoViolations)
 
 describe('Vue', () => {
   it('renders correctly', async () => {
-    const { mount } = require("@vue/test-utils");
+    const { mount } = require('@vue/test-utils');
     const wrapper = mount(Image)
     const results = await axe(wrapper.element);
     
