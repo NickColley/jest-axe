@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^8.0.5",
+    "@testing-library/vue": "^1.2.0",
     "@vue/server-test-utils": "^1.0.0-beta.29",
     "@vue/test-utils": "^1.0.0-beta.29",
     "async-to-gen": "1.4.0",
