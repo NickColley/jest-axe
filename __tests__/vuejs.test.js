@@ -1,6 +1,9 @@
 const { axe, toHaveNoViolations } = require('../index')
 
-const Image = require('./Image.vue')
+const Image = {
+  data: () => ({ src: '#' }),
+  template: '<img id="test-image" :src="src" />'
+};
 
 expect.extend(toHaveNoViolations)
 
