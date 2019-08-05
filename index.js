@@ -6,8 +6,8 @@ const { printReceived, matcherHint } = require('jest-matcher-utils')
 
 /**
  * Converts a HTML string or HTML element to a mounted HTML element.
- * @param {element | string} a HTML element or a HTML string
- * @returns {[element, function]} a HTML element and a function to restore the document
+ * @param {Element | string} a HTML element or a HTML string
+ * @returns {[Element, function]} a HTML element and a function to restore the document
  */
 function mount (html) {
   if (isHTMLElement(html)) {
@@ -65,7 +65,7 @@ function configureAxe (defaultOptions = {}) {
 
 /**
  * Checks if the HTML parameter provided is a HTML element.
- * @param {element} a HTML element or a HTML string
+ * @param {Element} a HTML element or a HTML string
  * @returns {boolean} true or false
  */
 function isHTMLElement (html) {
