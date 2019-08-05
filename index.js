@@ -3,18 +3,10 @@ const axeCore = require('axe-core')
 const merge = require('lodash.merge')
 const { printReceived, matcherHint } = require('jest-matcher-utils')
 
-function isHTMLElement (html) {
-  return html && typeof html === 'object' && typeof html.tagName === 'string'
-}
-
-function isHTMLString (html) {
-  return typeof html === 'string' && /(<([^>]+)>)/i.test(html)
-}
-
 /**
- * Converts an HTML string or HTML element to a mounted HTML element.
- * @param {Element | string} an HTML element or an HTML string
- * @returns {[Element, Function]} an HTML element and a function to restore the document
+ * Converts a HTML string or HTML element to a mounted HTML element.
+ * @param {element | string} a HTML element or a HTML string
+ * @returns {[element, function]} a HTML element and a function to restore the document
  */
 function mount (html) {
   if (isHTMLElement(html)) {
@@ -71,8 +63,26 @@ function configureAxe (defaultOptions = {}) {
 }
 
 /**
+ * Checks if the HTML parameter provided is a HTML element.
+ * @param {element} a HTML element or a HTML string
+ * @returns {boolean} true or false
+ */
+function isHTMLElement (html) {
+  return !!html && typeof html === 'object' && typeof html.tagName === 'string'
+}
+
+/**
+ * Checks that the HTML parameter provided is a string that contains HTML.
+ * @param {string} a HTML element or a HTML string
+ * @returns {boolean} true or false
+ */
+function isHTMLString (html) {
+  return typeof html === 'string' && /(<([^>]+)>)/i.test(html)
+}
+
+/**
  * Custom Jest expect matcher, that can check aXe results for violations.
- * @param {results} object requires an instance of aXe's results object
+ * @param {object} object requires an instance of aXe's results object
  * (https://github.com/dequelabs/axe-core/blob/develop-2x/doc/API.md#results-object)
  * @returns {object} returns Jest matcher object
  */
