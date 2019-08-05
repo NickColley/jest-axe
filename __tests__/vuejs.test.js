@@ -13,6 +13,8 @@ describe('Vue', () => {
     expect(() => {
       expect(results).toHaveNoViolations()
     }).toThrowErrorMatchingSnapshot()
+
+    console.log(document.body.innerHTML)
   })
 
 })
