@@ -2,6 +2,7 @@
 
 const axeCore = require('axe-core')
 const merge = require('lodash.merge')
+const chalk = require('chalk')
 const { printReceived, matcherHint } = require('jest-matcher-utils')
 
 /**
@@ -73,24 +74,25 @@ const toHaveNoViolations = {
       const horizontalLine = '\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500'
 
       return violations.map(violation => {
-        const htmlAndTarget = violation.nodes.map(node => {
+        const errorBody = violation.nodes.map(node => {
           const selector = node.target.join(', ')
+          const expectedText = `Expected the HTML found at $('${selector}') to have no violations:` + lineBreak
           return (
-            `Expected the HTML found at $('${selector}') to have no violations:` +
+            expectedText +
+            chalk.grey(node.html) +
             lineBreak +
-            node.html
+            `Received:` +
+            lineBreak +
+            printReceived(`${violation.help} (${violation.id})`) +
+            lineBreak +
+            chalk.yellow(node.failureSummary) +
+            lineBreak +
+            `You can find more information on this issue here: \n` +
+            chalk.blue(violation.helpUrl)
           )
         }).join(lineBreak)
 
-        return (
-          htmlAndTarget +
-          lineBreak +
-          `Received:` +
-          lineBreak +
-          printReceived(`${violation.help} (${violation.id})`) +
-          lineBreak +
-          `Try fixing it with this help: ${violation.helpUrl}`
-        )
+        return (errorBody)
       }).join(lineBreak + horizontalLine + lineBreak)
     }
 
