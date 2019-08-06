@@ -8,7 +8,7 @@ expect.extend(toHaveNoViolations)
 describe('React', () => {
 
   test('renders correctly', async () => {
-    const element = React.createElement('img', { src: '#' });
+    const element = React.createElement('img', { src: '#' })
     const html = ReactDOMServer.renderToString(element)
 
     const results = await axe(html)
@@ -20,7 +20,7 @@ describe('React', () => {
   test('renders a react testing library container correctly', async () => {
     const { render, cleanup } = require('@testing-library/react')
 
-    const element = React.createElement('img', { src: '#' });
+    const element = React.createElement('img', { src: '#' })
     const { container } = render(element)
     const results = await axe(container)
     
@@ -34,7 +34,7 @@ describe('React', () => {
   test('renders a react testing library container without duplicate ids', async () => {
     const { render, cleanup } = require('@testing-library/react')
 
-    const element = React.createElement('img', { src: '#', alt: 'test', id: 'test' });
+    const element = React.createElement('img', { src: '#', alt: 'test', id: 'test' })
     const { container } = render(element)
     const results = await axe(container)
 
@@ -44,12 +44,12 @@ describe('React', () => {
   })
 
   test('renders with enzyme wrapper correctly', async () => {
-    const { mount, configure } = require('enzyme');
-    const Adapter = require('enzyme-adapter-react-16');
+    const { mount, configure } = require('enzyme')
+    const Adapter = require('enzyme-adapter-react-16')
 
-    configure({ adapter: new Adapter() });
+    configure({ adapter: new Adapter() })
 
-    const element = React.createElement('img', { src: '#' });
+    const element = React.createElement('img', { src: '#' })
     const wrapper = mount(element)
     const results = await axe(wrapper.getDOMNode())
 

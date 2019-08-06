@@ -60,8 +60,8 @@ describe('jest-axe', () => {
     it('should not mutate the content of document.body permanently', async () => {
       const el = document.body.appendChild(document.createElement("div"))
       await axe(goodHtmlExample)
-      expect(document.body.childElementCount).toBe(1);
-      expect(document.body.firstChild).toEqual(el);
+      expect(document.body.childElementCount).toBe(1)
+      expect(document.body.firstChild).toEqual(el)
     })
 
     it('returns violations for failing html example', async () => {

@@ -47,13 +47,15 @@ it('should demonstrate this matcher`s usage', async () => {
 
 ```javascript
 const React = require('react')
+const { render } =  require('react-dom')
 const App = require('./app')
 
 const { axe, toHaveNoViolations } = require('jest-axe')
 expect.extend(toHaveNoViolations)
 
 it('should demonstrate this matcher`s usage with react', async () => {
-  const results = await axe(<App/>)
+  render(<App/>, document.body)
+  const results = await axe(document.body)
   expect(results).toHaveNoViolations()
 })
 ```
@@ -104,7 +106,7 @@ it('should demonstrate this matcher`s usage with react testing library', async (
 ```javascript
 const App = require('./App.vue')
 
-const { mount } = require('@vue/test-utils');
+const { mount } = require('@vue/test-utils')
 const { axe, toHaveNoViolations } = require('jest-axe')
 expect.extend(toHaveNoViolations)
 
@@ -115,7 +117,6 @@ it('should demonstrate this matcher`s usage with vue test utils', async () => {
   expect(results).toHaveNoViolations()
 })
 ```
-
 
 ### Testing Vue with [Vue Testing Library](https://testing-library.com/docs/vue-testing-library/intro)
 
