@@ -15,34 +15,44 @@ function configureAxe (defaultOptions = {}) {
   /**
    * Small wrapper for axe-core#run that enables promises (required for Jest),
    * default options and injects html to be tested
-   * @param {string} html requires a html string to be injected into the body
+   * @param {string|HTMLElement} htmlOrEl requires a html string to be injected into the body
    * @param {object} [additionalOptions] aXe options to merge with default options
    * @returns {promise} returns promise that will resolve with axe-core#run results object
    */
-  return function axe (html, additionalOptions = {}) {
-    const htmlType = (typeof html)
-    if (htmlType !== 'string') {
-      throw new Error(`html parameter should be a string not a ${htmlType}`)
+  return function axe (htmlOrEl, additionalOptions = {}) {
+    let el
+    let elAlreadyInBody
+    const htmlType = typeof htmlOrEl
+    if (htmlType === 'string') {
+      const html = htmlOrEl
+      const hasHtmlElements = /(<([^>]+)>)/i.test(html)
+      if (!hasHtmlElements) {
+        throw new Error(`html parameter ("${html}") has no elements`)
+      }
+      el = document.createElement('div')
+      el.innerHTML = html
+      elAlreadyInBody = false
+    } else if (htmlOrEl instanceof HTMLElement) {
+      el = htmlOrEl
+      elAlreadyInBody = document.body.contains(el)
+    } else {
+      throw new Error(
+        `html parameter should be a string or HTMLElement not a ${htmlType}`,
+      )
     }
 
-    const hasHtmlElements = /(<([^>]+)>)/i.test(html)
-    if (!hasHtmlElements) {
-      throw new Error(`html parameter ("${html}") has no elements`)
+    if (!elAlreadyInBody) {
+      document.body.appendChild(el)
     }
-
-    // Before we use Jests's jsdom document we store and remove all child nodes from the body.
-    const axeContainer = document.createElement('div');
-    axeContainer.innerHTML = html
-
-    // aXe requires real Nodes so we need to inject into Jests' jsdom document.
-    document.body.appendChild(axeContainer)
 
     const options = merge({}, defaultOptions, additionalOptions)
 
     return new Promise((resolve, reject) => {
-      axeCore.run(axeContainer, options, (err, results) => {
+      axeCore.run(el, options, (err, results) => {
         // In any case we restore the contents of the body by removing the additional element again.
-        document.body.removeChild(axeContainer)
+        if (!elAlreadyInBody) {
+          document.body.removeChild(el)
+        }
 
         if (err) throw err
         resolve(results)

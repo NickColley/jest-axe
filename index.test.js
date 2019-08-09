@@ -90,7 +90,7 @@ describe('jest-axe', () => {
     it('throws with non-string input', () => {
       expect(() => {
         axe({})
-      }).toThrow('html parameter should be a string not a object')
+      }).toThrow('html parameter should be a string or HTMLElement not a object')
     })
 
     it('throws with non-html input', () => {
@@ -260,6 +260,37 @@ describe('jest-axe', () => {
       const matcherFunction = toHaveNoViolations.toHaveNoViolations
       const matcherOutput = matcherFunction(results)
       expect(matcherOutput.message()).toMatchSnapshot()
+    })
+
+    it('works with DOM nodes directly', async () => {
+      const matcherFunction = toHaveNoViolations.toHaveNoViolations
+      const div = document.createElement('div')
+      const results = await axe(div)
+      const matcherOutput = matcherFunction(results)
+      expect(matcherOutput.pass).toBe(true)
+    })
+
+    it('does not append a DOM node that is already in the body', async () => {
+      const matcherFunction = toHaveNoViolations.toHaveNoViolations
+      const div1 = document.createElement('div')
+      div1.id = 'one'
+      const div2 = document.createElement('div')
+      div2.id = 'two'
+      document.body.appendChild(div1)
+      document.body.appendChild(div2)
+      const before = document.body.innerHTML
+      const results = await axe(div1)
+      const matcherOutput = matcherFunction(results)
+      expect(matcherOutput.pass).toBe(true)
+      expect(matcherOutput.message()).toBeUndefined()
+
+      // if it appended the div1 again, then their order would be switched
+      // we know that they were not switched because the body's innerHTML did
+      // not change.
+      expect(before).toEqual(document.body.innerHTML)
+      
+      document.body.removeChild(div1)
+      document.body.removeChild(div2)
     })
   })
   describe('readme', () => {
