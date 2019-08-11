@@ -43,29 +43,102 @@ it('should demonstrate this matcher`s usage', async () => {
 > Note, you can also require `'jest-axe/extend-expect'` which will call `expect.extend` for you.
 > This is especially helpful when using the jest `setupTestFrameworkScriptFile` configuration.
 
-### With React
+### Testing React
 
 ```javascript
-const { axe, toHaveNoViolations } = require('jest-axe')
+const React = require('react')
+const { render } =  require('react-dom')
+const App = require('./app')
 
+const { axe, toHaveNoViolations } = require('jest-axe')
 expect.extend(toHaveNoViolations)
 
-const React = require('react')
-const ReactDOMServer = require('react-dom/server')
-
 it('should demonstrate this matcher`s usage with react', async () => {
-  const html = ReactDOMServer.renderToString(
-    <img src='#' />
-  )
+  render(<App/>, document.body)
+  const results = await axe(document.body)
+  expect(results).toHaveNoViolations()
+})
+```
 
-  const results = await axe(html)
+### Testing React with [Enzyme](https://airbnb.io/enzyme/)
+
+```javascript
+const React = require('react')
+const App = require('./app')
+
+const { mount } = require('enzyme')
+const { axe, toHaveNoViolations } = require('jest-axe')
+expect.extend(toHaveNoViolations)
+
+it('should demonstrate this matcher`s usage with enzyme', async () => {
+  const wrapper = mount(<App/>)
+  const results = await axe(container.getDOMNode())
+  
+  expect(results).toHaveNoViolations()
+})
+```
+
+### Testing React with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+
+```javascript
+const React = require('react')
+const App = require('./app')
+
+const { render, cleanup } = require('@testing-library/react')
+const { axe, toHaveNoViolations } = require('jest-axe')
+expect.extend(toHaveNoViolations)
+
+it('should demonstrate this matcher`s usage with react testing library', async () => {
+  const { container } = render(<App/>)
+  const results = await axe(container)
+  
+  expect(results).toHaveNoViolations()
+  
+  cleanup()
+})
+```
+
+> Note: If you're using `react testing library` you should be using the
+> [`cleanup`](https://testing-library.com/docs/react-testing-library/api#cleanup) method. This method removes the rendered application from the DOM and ensures a clean HTML Document for further testing.
+
+### Testing Vue with [Vue Test Utils](https://vue-test-utils.vuejs.org/)
+
+```javascript
+const App = require('./App.vue')
+
+const { mount } = require('@vue/test-utils')
+const { axe, toHaveNoViolations } = require('jest-axe')
+expect.extend(toHaveNoViolations)
+
+it('should demonstrate this matcher`s usage with vue test utils', async () => {
+  const wrapper = mount(Image)
+  const results = await axe(wrapper.element)
 
   expect(results).toHaveNoViolations()
 })
 ```
 
-> Note, if you're using `react-testing-library` you should be using
-> [`cleanup`](https://testing-library.com/docs/react-testing-library/api#cleanup).
+### Testing Vue with [Vue Testing Library](https://testing-library.com/docs/vue-testing-library/intro)
+
+```javascript
+const React = require('react')
+const App = require('./app')
+
+const { render, cleanup } = require('@testing-library/vue')
+const { axe, toHaveNoViolations } = require('jest-axe')
+expect.extend(toHaveNoViolations)
+
+it('should demonstrate this matcher`s usage with react testing library', async () => {
+  const { container } = render(<App/>)
+  const results = await axe(container)
+  
+  expect(results).toHaveNoViolations()
+  
+  cleanup()
+})
+```
+> Note: If you're using `vue testing library` you should be using the
+> [`cleanup`](https://testing-library.com/docs/vue-testing-library/api#cleanup) method. This method removes the rendered application from the DOM and ensures a clean HTML Document for further testing.
 
 ### Axe configuration
 

@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-const { configureAxe, axe, toHaveNoViolations } = require('./index.js')
+const { configureAxe, axe, toHaveNoViolations } = require('../index.js')
 
 describe('jest-axe', () => {
   describe('axe', () => {
@@ -60,8 +60,8 @@ describe('jest-axe', () => {
     it('should not mutate the content of document.body permanently', async () => {
       const el = document.body.appendChild(document.createElement("div"))
       await axe(goodHtmlExample)
-      expect(document.body.childElementCount).toBe(1);
-      expect(document.body.firstChild).toBe(el);
+      expect(document.body.childElementCount).toBe(1)
+      expect(document.body.firstChild).toEqual(el)
     })
 
     it('returns violations for failing html example', async () => {
@@ -87,10 +87,10 @@ describe('jest-axe', () => {
       expect(violations.length).toBe(0)
     })
 
-    it('throws with non-string input', () => {
+    it('throws if input is not a string, vue element, react element, or react testing library render', () => {
       expect(() => {
         axe({})
-      }).toThrow('html parameter should be a string not a object')
+      }).toThrow('html parameter should be an HTML string or an HTML element')
     })
 
     it('throws with non-html input', () => {
@@ -128,6 +128,7 @@ describe('jest-axe', () => {
       expect(violation.description).toBe('Ensures links have discernible text')
     })
   })
+
   describe('toHaveNoViolations', () => {
     const failingAxeResults = {
       violations: [
@@ -264,7 +265,6 @@ describe('jest-axe', () => {
   })
   describe('readme', () => {
     describe('first readme example', () => {
-      const { axe, toHaveNoViolations } = require('jest-axe')
 
       expect.extend(toHaveNoViolations)
 
@@ -282,7 +282,6 @@ describe('jest-axe', () => {
       })
     })
     describe('readme axe config example', () => {
-      const { axe, toHaveNoViolations } = require('jest-axe')
 
       expect.extend(toHaveNoViolations)
 
@@ -308,7 +307,6 @@ describe('jest-axe', () => {
     })
     describe('readme axe global config example', () => {
       // Global helper file (axe-helper.js)
-      const { configureAxe } = require('jest-axe')
 
       const configuredAxe = configureAxe({
         rules: {
@@ -320,7 +318,6 @@ describe('jest-axe', () => {
       const exportedAxe = configuredAxe
 
       // Individual test file (test.js)
-      const { toHaveNoViolations } = require('jest-axe')
       const axe = exportedAxe // require('./axe-helper.js')
 
       expect.extend(toHaveNoViolations)
@@ -336,26 +333,6 @@ describe('jest-axe', () => {
         const html = render()
 
         expect(await axe(html)).toHaveNoViolations()
-      })
-    })
-    describe('readme react example', () => {
-      const { axe, toHaveNoViolations } = require('jest-axe')
-
-      expect.extend(toHaveNoViolations)
-
-      const React = require('react')
-      const ReactDOMServer = require('react-dom/server')
-
-      it('renders correctly', async () => {
-        const html = ReactDOMServer.renderToString(
-          React.createElement('img', { src: '#' })
-        )
-
-        const results = await axe(html)
-
-        expect(() => {
-          expect(results).toHaveNoViolations()
-        }).toThrowErrorMatchingSnapshot()
       })
     })
   })

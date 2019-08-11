@@ -23,29 +23,6 @@ You can find more information on this issue here:
 [34mhttps://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI[39m"
 `;
 
-exports[`jest-axe readme readme react example renders correctly 1`] = `
-"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
-
-Expected the HTML found at $('img') to have no violations:
-
-[90m<img src=\\"#\\" data-reactroot=\\"\\">[39m
-
-Received:
-
-[31m\\"Images must have alternate text (image-alt)\\"[39m
-
-[33mFix any of the following:[39m
-[33m  Element does not have an alt attribute[39m
-[33m  aria-label attribute does not exist or is empty[39m
-[33m  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty[39m
-[33m  Element has no title attribute or the title attribute is empty[39m
-[33m  Element's default semantics were not overridden with role=\\"presentation\\"[39m
-[33m  Element's default semantics were not overridden with role=\\"none\\"[39m
-
-You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI[39m"
-`;
-
 exports[`jest-axe toHaveNoViolations returns correctly formatted message when violations are present 1`] = `
 "[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
 
