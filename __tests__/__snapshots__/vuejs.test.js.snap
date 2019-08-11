@@ -20,7 +20,7 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI[39m"
+[34mhttps://dequeuniversity.com/rules/axe/3.3/image-alt?application=axeAPI[39m"
 `;
 
 exports[`Vue renders correctly 1`] = `
@@ -43,5 +43,5 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI[39m"
+[34mhttps://dequeuniversity.com/rules/axe/3.3/image-alt?application=axeAPI[39m"
 `;
