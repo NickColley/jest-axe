@@ -1,3 +1,12 @@
+# 3.2.0
+
+- Improved support for using DOM nodes which makes jest-axe work better with testing libraries such as @testing-library, React and Vue - thanks to [@dakebl](https://github.com/dakebl) for contributing this, and everyone for helping review this.
+- Improved help text output including colour highlighting - thanks to [@dakebl](https://github.com/dakebl)
+- Update axe-core to 3.3.1, you may need to update any snapshot tests.
+- Update dependencies to avoid vulnerability warnings - thanks to [@chimericdream](https://github.com/chimericdream) for the prompt
+
+See the [full 3.2.0 milestone](https://github.com/nickcolley/jest-axe/milestone/1) for all related issues and pull requests.
+
 # 3.1.1
 
 - Ensure that jest-axe cleans up the document after it runs [(Issue #50)](https://github.com/nickcolley/jest-axe/issues/50) Thanks @thomasheyenbrock and @camdub !
