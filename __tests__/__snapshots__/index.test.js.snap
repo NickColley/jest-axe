@@ -20,7 +20,7 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.3/image-alt?application=axeAPI[39m"
+[34mhttps://dequeuniversity.com/rules/axe/3.4/image-alt?application=axeAPI[39m"
 `;
 
 exports[`jest-axe toHaveNoViolations returns correctly formatted message when violations are present 1`] = `
@@ -66,7 +66,7 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.3/image-alt?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/3.4/image-alt?application=axeAPI[39m
 
 Expected the HTML found at $('img[src=\\"http\\\\:\\\\/\\\\/example\\\\.com\\\\/2\\"]') to have no violations:
 
@@ -85,7 +85,7 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.3/image-alt?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/3.4/image-alt?application=axeAPI[39m
 
 ────────
 
@@ -105,7 +105,7 @@ Received:
 [33m  Element has no title attribute or the title attribute is empty[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.3/label?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/3.4/label?application=axeAPI[39m
 
 ────────
 
@@ -128,7 +128,7 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.3/link-name?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/3.4/link-name?application=axeAPI[39m
 
 Expected the HTML found at $('a[href$=\\"\\\\#link-name-2\\"]') to have no violations:
 
@@ -149,7 +149,7 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.3/link-name?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/3.4/link-name?application=axeAPI[39m
 
 ────────
 
@@ -165,7 +165,7 @@ Received:
 [33m  No skip link target[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.3/skip-link?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/3.4/skip-link?application=axeAPI[39m
 
 Expected the HTML found at $('a[href$=\\"\\\\#link-name-2\\"]') to have no violations:
 
@@ -179,5 +179,5 @@ Received:
 [33m  No skip link target[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.3/skip-link?application=axeAPI[39m"
+[34mhttps://dequeuniversity.com/rules/axe/3.4/skip-link?application=axeAPI[39m"
 `;
