@@ -72,7 +72,7 @@ expect.extend(toHaveNoViolations)
 
 it('should demonstrate this matcher`s usage with enzyme', async () => {
   const wrapper = mount(<App/>)
-  const results = await axe(container.getDOMNode())
+  const results = await axe(wrapper.getDOMNode())
   
   expect(results).toHaveNoViolations()
 })
