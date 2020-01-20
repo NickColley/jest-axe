@@ -1,3 +1,7 @@
+# 3.3.0
+
+- [Update axe-core to 3.4.1](https://github.com/nickcolley/jest-axe/pull/83) - thanks [@mohanraj-r](https://github.com/mohanraj-r)
+
 # 3.2.0
 
 - Improved support for using DOM nodes which makes jest-axe work better with testing libraries such as @testing-library, React and Vue - thanks to [@dakebl](https://github.com/dakebl) for contributing this, and everyone for helping review this.
