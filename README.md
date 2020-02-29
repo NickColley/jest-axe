@@ -21,6 +21,13 @@ You'll also need to:
 npm install --save-dev jest-axe
 ```
 
+If you are using `Typescript`, you need to install the types package too:
+
+```bash
+npm install --save-dev @types/jest-axe
+```
+
+
 ## Usage:
 
 ```javascript
