@@ -20,7 +20,23 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.4/image-alt?application=axeAPI[39m"
+[34mhttps://dequeuniversity.com/rules/axe/3.5/image-alt?application=axeAPI[39m
+
+────────
+
+Expected the HTML found at $('img') to have no violations:
+
+[90m<img src=\\"#\\">[39m
+
+Received:
+
+[31m\\"All page content must be contained by landmarks (region)\\"[39m
+
+[33mFix any of the following:[39m
+[33m  Some page content is not contained by landmarks[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.5/region?application=axeAPI[39m"
 `;
 
 exports[`jest-axe toHaveNoViolations returns correctly formatted message when violations are present 1`] = `
@@ -66,7 +82,7 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.4/image-alt?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/3.5/image-alt?application=axeAPI[39m
 
 Expected the HTML found at $('img[src=\\"http\\\\:\\\\/\\\\/example\\\\.com\\\\/2\\"]') to have no violations:
 
@@ -85,7 +101,7 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.4/image-alt?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/3.5/image-alt?application=axeAPI[39m
 
 ────────
 
@@ -105,7 +121,7 @@ Received:
 [33m  Element has no title attribute or the title attribute is empty[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.4/label?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/3.5/label?application=axeAPI[39m
 
 ────────
 
@@ -128,7 +144,7 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.4/link-name?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/3.5/link-name?application=axeAPI[39m
 
 Expected the HTML found at $('a[href$=\\"\\\\#link-name-2\\"]') to have no violations:
 
@@ -149,7 +165,51 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.4/link-name?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/3.5/link-name?application=axeAPI[39m
+
+────────
+
+Expected the HTML found at $('img[src$=\\"example\\\\.com\\"]') to have no violations:
+
+[90m<img src=\\"http://example.com\\">[39m
+
+Received:
+
+[31m\\"All page content must be contained by landmarks (region)\\"[39m
+
+[33mFix any of the following:[39m
+[33m  Some page content is not contained by landmarks[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.5/region?application=axeAPI[39m
+
+Expected the HTML found at $('img[src=\\"http\\\\:\\\\/\\\\/example\\\\.com\\\\/2\\"]') to have no violations:
+
+[90m<img src=\\"http://example.com/2\\">[39m
+
+Received:
+
+[31m\\"All page content must be contained by landmarks (region)\\"[39m
+
+[33mFix any of the following:[39m
+[33m  Some page content is not contained by landmarks[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.5/region?application=axeAPI[39m
+
+Expected the HTML found at $('input') to have no violations:
+
+[90m<input type=\\"text\\">[39m
+
+Received:
+
+[31m\\"All page content must be contained by landmarks (region)\\"[39m
+
+[33mFix any of the following:[39m
+[33m  Some page content is not contained by landmarks[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.5/region?application=axeAPI[39m
 
 ────────
 
@@ -165,7 +225,7 @@ Received:
 [33m  No skip link target[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.4/skip-link?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/3.5/skip-link?application=axeAPI[39m
 
 Expected the HTML found at $('a[href$=\\"\\\\#link-name-2\\"]') to have no violations:
 
@@ -179,5 +239,5 @@ Received:
 [33m  No skip link target[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.4/skip-link?application=axeAPI[39m"
+[34mhttps://dequeuniversity.com/rules/axe/3.5/skip-link?application=axeAPI[39m"
 `;

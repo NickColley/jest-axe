@@ -20,7 +20,7 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.4/image-alt?application=axeAPI[39m"
+[34mhttps://dequeuniversity.com/rules/axe/3.5/image-alt?application=axeAPI[39m"
 `;
 
 exports[`Vue renders correctly 1`] = `
@@ -43,5 +43,21 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.4/image-alt?application=axeAPI[39m"
+[34mhttps://dequeuniversity.com/rules/axe/3.5/image-alt?application=axeAPI[39m
+
+────────
+
+Expected the HTML found at $('#test-image') to have no violations:
+
+[90m<img id=\\"test-image\\" src=\\"#\\">[39m
+
+Received:
+
+[31m\\"All page content must be contained by landmarks (region)\\"[39m
+
+[33mFix any of the following:[39m
+[33m  Some page content is not contained by landmarks[39m
+
+You can find more information on this issue here: 
+[34mhttps://dequeuniversity.com/rules/axe/3.5/region?application=axeAPI[39m"
 `;

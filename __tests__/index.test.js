@@ -24,7 +24,9 @@ describe('jest-axe', () => {
     const goodHtmlExample = `
      <html>
        <body>
+        <main>
          <a href="http://gov.uk">Visit GOV.UK</a>
+        </main>
        </body>
      </html>
     `
@@ -37,18 +39,17 @@ describe('jest-axe', () => {
 
     it('can be configured for global configs', async () => {
       const results = await linkNameAxe(failingHtmlExample)
-      const violations = results.violations
-      expect(violations.length).toBe(0)
+      expect(results.violations).toEqual([])
     })
 
     it('can pass in merged configurations to configured axe', async () => {
       const results = await linkNameAxe(failingExtendedHtmlExample, {
         rules: {
-          'image-alt': { enabled: false }
+          'image-alt': { enabled: false },
+          'region': { enabled: false }
         }
       })
-      const violations = results.violations
-      expect(violations.length).toBe(0)
+      expect(results.violations).toEqual([])
     })
 
     it('returns an axe results object', async () => {
@@ -77,14 +78,12 @@ describe('jest-axe', () => {
           'link-name': { enabled: false }
         }
       })
-      const violations = results.violations
-      expect(violations.length).toBe(0)
+      expect(results.violations).toEqual([])
     })
 
     it('returns no violations for a good html example', async () => {
       const results = await axe(goodHtmlExample)
-      const violations = results.violations
-      expect(violations.length).toBe(0)
+      expect(results.violations).toEqual([])
     })
 
     it('throws if input is not a string, vue element, react element, or react testing library render', () => {
@@ -105,8 +104,7 @@ describe('jest-axe', () => {
           'link-name': { enabled: false }
         }
       })
-      let violations = results.violations
-      expect(violations.length).toBe(0)
+      expect(results.violations).toEqual([])
 
       const configuredAxe = configureAxe({
         rules: {
@@ -119,8 +117,7 @@ describe('jest-axe', () => {
           'link-name': { enabled: false }
         }
       })
-      violations = results.violations
-      expect(violations.length).toBe(0)
+      expect(results.violations).toEqual([])
 
       results = await axe(failingHtmlExample)
       const violation = results.violations[0]
@@ -298,7 +295,8 @@ describe('jest-axe', () => {
         const results = await axe(html, {
           rules: {
             // for demonstration only, don't disable rules that need fixing.
-            'image-alt': { enabled: false }
+            'image-alt': { enabled: false },
+            'region': { enabled: false }
           }
         })
 
@@ -311,7 +309,8 @@ describe('jest-axe', () => {
       const configuredAxe = configureAxe({
         rules: {
           // for demonstration only, don't disable rules that need fixing.
-          'image-alt': { enabled: false }
+          'image-alt': { enabled: false },
+          'region': { enabled: false }
         }
       })
 
