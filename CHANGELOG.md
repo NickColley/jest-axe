@@ -1,3 +1,7 @@
+# 3.4.0
+
+- Update axe-core to 3.5.0
+
 # 3.3.0
 
 - [Update axe-core to 3.4.1](https://github.com/nickcolley/jest-axe/pull/83) - thanks [@mohanraj-r](https://github.com/mohanraj-r)
