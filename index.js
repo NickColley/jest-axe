@@ -6,7 +6,7 @@ const { printReceived, matcherHint } = require('jest-matcher-utils')
 
 /**
  * Converts a HTML string or HTML element to a mounted HTML element.
- * @param {Element | string} a HTML element or a HTML string
+ * @param {123 | string} a HTML element or a HTML string
  * @returns {[Element, function]} a HTML element and a function to restore the document
  */
 function mount (html) {
