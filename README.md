@@ -90,7 +90,7 @@ it('should demonstrate this matcher`s usage with enzyme', async () => {
 const React = require('react')
 const App = require('./app')
 
-const { render, cleanup } = require('@testing-library/react')
+const { render } = require('@testing-library/react')
 const { axe, toHaveNoViolations } = require('jest-axe')
 expect.extend(toHaveNoViolations)
 
@@ -99,12 +99,10 @@ it('should demonstrate this matcher`s usage with react testing library', async (
   const results = await axe(container)
   
   expect(results).toHaveNoViolations()
-  
-  cleanup()
 })
 ```
 
-> Note: If you're using `react testing library` you should be using the
+> Note: If you're using `react testing library` <9.0.0 you should be using the
 > [`cleanup`](https://testing-library.com/docs/react-testing-library/api#cleanup) method. This method removes the rendered application from the DOM and ensures a clean HTML Document for further testing.
 
 ### Testing Vue with [Vue Test Utils](https://vue-test-utils.vuejs.org/)
@@ -130,7 +128,7 @@ it('should demonstrate this matcher`s usage with vue test utils', async () => {
 const React = require('react')
 const App = require('./app')
 
-const { render, cleanup } = require('@testing-library/vue')
+const { render } = require('@testing-library/vue')
 const { axe, toHaveNoViolations } = require('jest-axe')
 expect.extend(toHaveNoViolations)
 
@@ -139,11 +137,9 @@ it('should demonstrate this matcher`s usage with react testing library', async (
   const results = await axe(container)
   
   expect(results).toHaveNoViolations()
-  
-  cleanup()
 })
 ```
-> Note: If you're using `vue testing library` you should be using the
+> Note: If you're using `vue testing library` <3.0.0 you should be using the
 > [`cleanup`](https://testing-library.com/docs/vue-testing-library/api#cleanup) method. This method removes the rendered application from the DOM and ensures a clean HTML Document for further testing.
 
 ### Axe configuration

@@ -19,15 +19,13 @@ describe('Vue', () => {
   })
 
   it('renders a vue testing library container correctly', async () => {
-    const { render, cleanup } = require('@testing-library/vue')
+    const { render } = require('@testing-library/vue')
     const { container } = render(Image)
     const results = await axe(container)
     
     expect(() => {
       expect(results).toHaveNoViolations()
     }).toThrowErrorMatchingSnapshot()
-
-    cleanup()
   })
 
 })

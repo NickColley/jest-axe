@@ -18,7 +18,7 @@ describe('React', () => {
   })
 
   test('renders a react testing library container correctly', async () => {
-    const { render, cleanup } = require('@testing-library/react')
+    const { render } = require('@testing-library/react')
 
     const element = React.createElement('img', { src: '#' })
     const { container } = render(element)
@@ -27,20 +27,16 @@ describe('React', () => {
     expect(() => {
       expect(results).toHaveNoViolations()
     }).toThrowErrorMatchingSnapshot()
-
-    cleanup()
   })
 
   test('renders a react testing library container without duplicate ids', async () => {
-    const { render, cleanup } = require('@testing-library/react')
+    const { render } = require('@testing-library/react')
 
     const element = React.createElement('img', { src: '#', alt: 'test', id: 'test' })
     const { container } = render(element)
     const results = await axe(container)
 
     expect(results).toHaveNoViolations()
-    
-    cleanup()
   })
 
   test('renders with enzyme wrapper correctly', async () => {
