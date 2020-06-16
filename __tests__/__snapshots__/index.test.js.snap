@@ -209,35 +209,5 @@ Received:
 [33m  Some page content is not contained by landmarks[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.5/region?application=axeAPI[39m
-
-────────
-
-Expected the HTML found at $('a[href$=\\"\\\\#link-name\\"]') to have no violations:
-
-[90m<a href=\\"#link-name\\"></a>[39m
-
-Received:
-
-[31m\\"The skip-link target should exist and be focusable (skip-link)\\"[39m
-
-[33mFix any of the following:[39m
-[33m  No skip link target[39m
-
-You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.5/skip-link?application=axeAPI[39m
-
-Expected the HTML found at $('a[href$=\\"\\\\#link-name-2\\"]') to have no violations:
-
-[90m<a href=\\"#link-name-2\\"></a>[39m
-
-Received:
-
-[31m\\"The skip-link target should exist and be focusable (skip-link)\\"[39m
-
-[33mFix any of the following:[39m
-[33m  No skip link target[39m
-
-You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.5/skip-link?application=axeAPI[39m"
+[34mhttps://dequeuniversity.com/rules/axe/3.5/region?application=axeAPI[39m"
 `;
