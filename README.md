@@ -125,7 +125,6 @@ it('should demonstrate this matcher`s usage with vue test utils', async () => {
 ### Testing Vue with [Vue Testing Library](https://testing-library.com/docs/vue-testing-library/intro)
 
 ```javascript
-const React = require('react')
 const App = require('./app')
 
 const { render } = require('@testing-library/vue')
