@@ -216,7 +216,21 @@ it('should demonstrate this matcher`s usage with a default config', async () => 
 
 ### Setting custom rules and checks.
 
-The configuration object passed to `configureAxe` accepts a `globalOptions` property to configure the format of the data used by axe and to add custom checks and rules. The property value is the same as the parameter passed to [axe.configure](https://github.com/dequelabs/axe-core/blob/master/doc/API.md#parameters-1). 
+The configuration object passed to `configureAxe`, accepts a `globalOptions` property to configure the format of the data used by axe and to add custom checks and rules. The property value is the same as the parameter passed to [axe.configure](https://github.com/dequelabs/axe-core/blob/master/doc/API.md#parameters-1). 
+
+```javascript
+// Global helper file (axe-helper.js)
+const { configureAxe } = require('jest-axe')
+
+const axe = configureAxe({
+  globalOptions: {
+    checks: [/* custom checks definitions */]
+  },
+  // ...
+})
+
+module.exports = axe
+```
 
 Refer to [Developing Axe-core Rules](https://github.com/dequelabs/axe-core/blob/master/doc/rule-development.md) for instructions on how to develop custom rules and checks.
 
