@@ -334,5 +334,61 @@ describe('jest-axe', () => {
         expect(await axe(html)).toHaveNoViolations()
       })
     })
+    describe('configure custom rule', () => {
+      
+      expect.extend(toHaveNoViolations)
+
+      it('should report custom rules', async () => {
+
+        const check = {
+          id: 'demo-has-data',
+          evaluate(node) {
+            return node.hasAttribute('data-demo-rule');
+            
+          },
+          metadata: {
+            impact: 'serious',
+            messages: {
+              fail: 'Error!',
+            },
+          },
+        }
+        const rule = {
+          id: 'demo-rule',
+          selector: '.demo',
+          enabled: false,
+          tags: ['demo-rules'],
+          any: ['demo-has-data'],
+          metadata: {
+            description: 'Demo check',
+            help: 'Demo check',
+          },
+        }
+
+        const configuredAxe = configureAxe({
+          globalOptions: {
+            rules: [rule],
+            checks: [check]
+          },
+          rules: {
+            'demo-rule': { enabled: true }
+          }
+        })
+
+
+        const html = `
+        <html>
+          <body>
+            <main>
+              <div class="demo">
+            </main>
+          </body>
+        </html>
+        `
+
+        const results = await configuredAxe(html)
+        expect(results.violations[0].id).toBe('demo-rule')
+      })
+    })
   })
 })

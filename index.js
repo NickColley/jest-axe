@@ -38,10 +38,21 @@ function mount (html) {
 /**
  * Small wrapper for axe-core#run that enables promises (required for Jest),
  * default options and injects html to be tested
- * @param {object} [defaultOptions] default options to use in all instances
+ * @param {object} [options] default options to use in all instances
+ * @param {object} [options.globalOptions] Global axe-core configuration (See https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#api-name-axeconfigure)
+ * @param {object} [options.*] Any other property will be passed as the runner configuration (See https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter)
  * @returns {function} returns instance of axe
  */
-function configureAxe (defaultOptions = {}) {
+function configureAxe (options = {}) {
+
+  const { globalOptions = {}, ...runnerOptions } = options
+
+  // Set the global configuration for
+  // axe-core 
+  // https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#api-name-axeconfigure 
+  axeCore.configure(globalOptions)
+
+
   /**
    * Small wrapper for axe-core#run that enables promises (required for Jest),
    * default options and injects html to be tested
@@ -51,7 +62,7 @@ function configureAxe (defaultOptions = {}) {
    */
   return function axe (html, additionalOptions = {}) {
     const [element, restore] = mount(html)
-    const options = merge({}, defaultOptions, additionalOptions)
+    const options = merge({}, runnerOptions, additionalOptions)
 
     return new Promise((resolve, reject) => {
       axeCore.run(element, options, (err, results) => {
@@ -116,9 +127,12 @@ const toHaveNoViolations = {
             printReceived(`${violation.help} (${violation.id})`) +
             lineBreak +
             chalk.yellow(node.failureSummary) +
-            lineBreak +
-            `You can find more information on this issue here: \n` +
-            chalk.blue(violation.helpUrl)
+            lineBreak + (
+              violation.helpUrl ? 
+              `You can find more information on this issue here: \n${chalk.blue(violation.helpUrl)}` : 
+              ''
+            )
+            
           )
         }).join(lineBreak)
 
