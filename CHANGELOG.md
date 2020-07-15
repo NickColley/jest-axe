@@ -1,3 +1,9 @@
+# 3.5.0
+
+- [Add a globalOptions configuration property to setup custom rules and checks](https://github.com/nickcolley/jest-axe/pull/114) - thanks [@dwightjack](https://github.com/@dwightjack)
+
+See [setting custom rules and checks](https://github.com/nickcolley/jest-axe#setting-custom-rules-and-checks) for usage.
+
 # 3.4.0
 
 - Update axe-core to 3.5.0
