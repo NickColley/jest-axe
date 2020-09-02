@@ -20,7 +20,7 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.5/image-alt?application=axeAPI[39m"
+[34mhttps://dequeuniversity.com/rules/axe/4.0/image-alt?application=axeAPI[39m"
 `;
 
 exports[`Vue renders correctly 1`] = `
@@ -43,7 +43,7 @@ Received:
 [33m  Element's default semantics were not overridden with role=\\"none\\"[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.5/image-alt?application=axeAPI[39m
+[34mhttps://dequeuniversity.com/rules/axe/4.0/image-alt?application=axeAPI[39m
 
 ────────
 
@@ -59,5 +59,5 @@ Received:
 [33m  Some page content is not contained by landmarks[39m
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/3.5/region?application=axeAPI[39m"
+[34mhttps://dequeuniversity.com/rules/axe/4.0/region?application=axeAPI[39m"
 `;

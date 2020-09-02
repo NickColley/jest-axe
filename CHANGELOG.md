@@ -1,3 +1,7 @@
+# 4.0.0
+
+- Update [axe-core to version 4](https://github.com/dequelabs/axe-core/releases/tag/v4.0.0).
+
 # 3.5.0
 
 - [Add a globalOptions configuration property to setup custom rules and checks](https://github.com/nickcolley/jest-axe/pull/114) - thanks [@dwightjack](https://github.com/@dwightjack)
