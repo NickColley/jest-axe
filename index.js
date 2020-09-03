@@ -93,6 +93,24 @@ function isHTMLString (html) {
 }
 
 /**
+ * Filters all violations by user impact
+ * @param {object} violations result of the accessibilty check by axe
+ * @param {array} impactLevels defines which impact level should be considered (e.g ['critical'])
+ * The level of impact can be "minor", "moderate", "serious", or "critical".
+ * @returns {object} violations filtered by impact level
+ */
+function filterViolations (violations, impactLevels) {
+  if (typeof violations === 'undefined') {
+    throw new Error('No violations found in aXe results object')
+  }
+
+  if (impactLevels && impactLevels.length > 0) {
+    return violations.filter(v => impactLevels.includes(v.impact))
+  }
+  return violations
+}
+
+/**
  * Custom Jest expect matcher, that can check aXe results for violations.
  * @param {object} object requires an instance of aXe's results object
  * (https://github.com/dequelabs/axe-core/blob/develop-2x/doc/API.md#results-object)
@@ -100,7 +118,10 @@ function isHTMLString (html) {
  */
 const toHaveNoViolations = {
   toHaveNoViolations (results) {
-    const violations = results.violations
+    const violations = filterViolations(
+      results.violations,
+      results.toolOptions ? results.toolOptions.impactLevels : []
+    )
 
     if (typeof violations === 'undefined') {
       throw new Error('No violations found in aXe results object')
