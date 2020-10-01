@@ -30,7 +30,7 @@
     "lodash.merge": "^4.6.2"
   },
   "devDependencies": {
-    "@testing-library/react": "^10.2.1",
+    "@testing-library/react": "^11.0.4",
     "@testing-library/vue": "^5.0.4",
     "@vue/server-test-utils": "^1.0.0-beta.31",
     "@vue/test-utils": "^1.0.0-beta.31",
