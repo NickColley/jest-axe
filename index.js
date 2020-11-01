@@ -100,10 +100,6 @@ function isHTMLString (html) {
  * @returns {object} violations filtered by impact level
  */
 function filterViolations (violations, impactLevels) {
-  if (typeof violations === 'undefined') {
-    throw new Error('No violations found in aXe results object')
-  }
-
   if (impactLevels && impactLevels.length > 0) {
     return violations.filter(v => impactLevels.includes(v.impact))
   }
@@ -118,14 +114,14 @@ function filterViolations (violations, impactLevels) {
  */
 const toHaveNoViolations = {
   toHaveNoViolations (results) {
+    if (typeof results.violations === "undefined") {
+      throw new Error("No violations found in aXe results object");
+    }
+
     const violations = filterViolations(
       results.violations,
       results.toolOptions ? results.toolOptions.impactLevels : []
     )
-
-    if (typeof violations === 'undefined') {
-      throw new Error('No violations found in aXe results object')
-    }
 
     const reporter = violations => {
       if (violations.length === 0) {
