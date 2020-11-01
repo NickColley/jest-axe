@@ -232,6 +232,22 @@ const axe = configureAxe({
 module.exports = axe
 ```
 
+### Setting the level of user impact.
+
+An array which defines which [impact](https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md) level should be considered. This ensures that only violations with a specific impact on the user are considered. The level of impact can be "minor", "moderate", "serious", or "critical".
+
+```javascript
+// Global helper file (axe-helper.js)
+const { configureAxe } = require('jest-axe')
+
+const axe = configureAxe({
+  impactLevels: ['critical'],
+  // ...
+})
+
+module.exports = axe
+```
+
 Refer to [Developing Axe-core Rules](https://github.com/dequelabs/axe-core/blob/master/doc/rule-development.md) for instructions on how to develop custom rules and checks.
 
 ## Thanks

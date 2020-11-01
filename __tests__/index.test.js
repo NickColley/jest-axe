@@ -390,5 +390,30 @@ describe('jest-axe', () => {
         expect(results.violations[0].id).toBe('demo-rule')
       })
     })
+
+    describe('custom configuration for user impact', () => {
+      const axe = configureAxe({
+        // How serious the violation is. Can be one of "minor", "moderate", "serious", or "critical".
+        impactLevels: ['critical']
+      })
+
+      expect.extend(toHaveNoViolations)
+
+      it('should pass the test, because only critical violations are noted.', async () => {
+        // 1 x moderate violation -> https://dequeuniversity.com/rules/axe/4.0/region?application=axeAPI
+        const render = () => `
+          <div>
+            <div>
+              <span> some content</span>
+            </div>
+          </div>
+        `
+
+        // pass anything that outputs html to axe
+        const html = render()
+
+        expect(await axe(html)).toHaveNoViolations()
+      })
+    })
   })
 })
