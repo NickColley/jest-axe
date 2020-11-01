@@ -39,8 +39,8 @@
     "jest": "26.0.1",
     "react": "16.14.0",
     "react-dom": "16.13.0",
-    "vue": "2.6.11",
+    "vue": "2.6.12",
     "vue-server-renderer": "2.6.11",
-    "vue-template-compiler": "2.6.11"
+    "vue-template-compiler": "2.6.12"
   }
 }
