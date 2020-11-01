@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [lts/dubnium, lts/erbium, stable]
+        node-version: [10, 12, 14]
 
     steps:
     - uses: actions/checkout@v2
