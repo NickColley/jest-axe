@@ -9,7 +9,7 @@
     "extend-expect.js"
   ],
   "scripts": {
-    "test": "jest"
+    "test": "FORCE_COLOR=0 jest"
   },
   "keywords": [
     "jest",
