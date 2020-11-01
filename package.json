@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "axe-core": "4.0.1",
-    "chalk": "4.0.0",
+    "chalk": "4.1.0",
     "jest-matcher-utils": "26.6.1",
     "lodash.merge": "4.6.2"
   },
