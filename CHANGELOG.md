@@ -1,3 +1,7 @@
+# 4.1.0
+
+- You can now [filter violations by user impact](https://github.com/nickcolley/jest-axe#setting-the-level-of-user-impact) - thanks [@martiL](https://github.com/martiL).
+
 # 4.0.0
 
 - Update [axe-core to version 4](https://github.com/dequelabs/axe-core/releases/tag/v4.0.0).
