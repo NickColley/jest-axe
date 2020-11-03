@@ -105,7 +105,8 @@ it('should demonstrate this matcher`s usage with react testing library', async (
 > Note: If you're using `react testing library` <9.0.0 you should be using the
 > [`cleanup`](https://testing-library.com/docs/react-testing-library/api#cleanup) method. This method removes the rendered application from the DOM and ensures a clean HTML Document for further testing.
 
-In case you're using this library to verify some component that relies on [React Portals](https://reactjs.org/docs/portals.html#gatsby-focus-wrapper), make sure you supply [`baseElement`](https://testing-library.com/docs/react-testing-library/api#baseelement) instead of `container`:
+If you're using [React Portals](https://reactjs.org/docs/portals.html), use the [`baseElement`](https://testing-library.com/docs/react-testing-library/api#baseelement) instead of `container`:
+
 ```js
 it('should work with React Portals as well', async () => {
   const { baseElement } = render(<App/>)
