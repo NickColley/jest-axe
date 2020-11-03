@@ -115,7 +115,6 @@ it('should work with React Portals as well', async () => {
   expect(results).toHaveNoViolations()
 })
 ```
-Otherwise, `jest-axe` won't be able to perform its clean-up properly and throw an error.
 
 ### Testing Vue with [Vue Test Utils](https://vue-test-utils.vuejs.org/)
 
