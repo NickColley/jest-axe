@@ -52,16 +52,17 @@ it('should demonstrate this matcher`s usage', async () => {
 ### Testing React
 
 ```javascript
-const React = require('react')
-const { render } =  require('react-dom')
-const App = require('./app')
-
-const { axe, toHaveNoViolations } = require('jest-axe')
+import React from 'react';
+import { render } from 'react-dom'
+import EventsPage from '../pages/EventsPage';
+ 
+import { axe, toHaveNoViolations } from 'jest-axe';
 expect.extend(toHaveNoViolations)
 
 it('should demonstrate this matcher`s usage with react', async () => {
-  render(<App/>, document.body)
-  const results = await axe(document.body)
+  const root = document.createElement("div");
+  render(<App/>, root)
+  const results = await axe(root)
   expect(results).toHaveNoViolations()
 })
 ```
