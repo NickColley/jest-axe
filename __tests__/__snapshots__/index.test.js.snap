@@ -15,12 +15,11 @@ Fix any of the following:
   Element does not have an alt attribute
   aria-label attribute does not exist or is empty
   aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
-  Element has no title attribute or the title attribute is empty
-  Element's default semantics were not overridden with role=\\"presentation\\"
-  Element's default semantics were not overridden with role=\\"none\\"
+  Element has no title attribute
+  Element's default semantics were not overridden with role=\\"none\\" or role=\\"presentation\\"
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.0/image-alt?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.2/image-alt?application=axeAPI
 
 ────────
 
@@ -30,13 +29,13 @@ Expected the HTML found at $('img') to have no violations:
 
 Received:
 
-\\"All page content must be contained by landmarks (region)\\"
+\\"All page content should be contained by landmarks (region)\\"
 
 Fix any of the following:
   Some page content is not contained by landmarks
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.0/region?application=axeAPI"
+https://dequeuniversity.com/rules/axe/4.2/region?application=axeAPI"
 `;
 
 exports[`jest-axe toHaveNoViolations returns correctly formatted message when violations are present 1`] = `
@@ -77,12 +76,11 @@ Fix any of the following:
   Element does not have an alt attribute
   aria-label attribute does not exist or is empty
   aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
-  Element has no title attribute or the title attribute is empty
-  Element's default semantics were not overridden with role=\\"presentation\\"
-  Element's default semantics were not overridden with role=\\"none\\"
+  Element has no title attribute
+  Element's default semantics were not overridden with role=\\"none\\" or role=\\"presentation\\"
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.0/image-alt?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.2/image-alt?application=axeAPI
 
 Expected the HTML found at $('img[src=\\"http\\\\:\\\\/\\\\/example\\\\.com\\\\/2\\"]') to have no violations:
 
@@ -96,12 +94,11 @@ Fix any of the following:
   Element does not have an alt attribute
   aria-label attribute does not exist or is empty
   aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
-  Element has no title attribute or the title attribute is empty
-  Element's default semantics were not overridden with role=\\"presentation\\"
-  Element's default semantics were not overridden with role=\\"none\\"
+  Element has no title attribute
+  Element's default semantics were not overridden with role=\\"none\\" or role=\\"presentation\\"
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.0/image-alt?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.2/image-alt?application=axeAPI
 
 ────────
 
@@ -114,14 +111,16 @@ Received:
 \\"Form elements must have labels (label)\\"
 
 Fix any of the following:
-  aria-label attribute does not exist or is empty
-  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
   Form element does not have an implicit (wrapped) <label>
   Form element does not have an explicit <label>
-  Element has no title attribute or the title attribute is empty
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Element has no title attribute
+  Element has no placeholder attribute
+  Element's default semantics were not overridden with role=\\"none\\" or role=\\"presentation\\"
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.0/label?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.2/label?application=axeAPI
 
 ────────
 
@@ -140,11 +139,10 @@ Fix any of the following:
   Element does not have text that is visible to screen readers
   aria-label attribute does not exist or is empty
   aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
-  Element's default semantics were not overridden with role=\\"presentation\\"
-  Element's default semantics were not overridden with role=\\"none\\"
+  Element has no title attribute
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.0/link-name?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.2/link-name?application=axeAPI
 
 Expected the HTML found at $('a[href$=\\"\\\\#link-name-2\\"]') to have no violations:
 
@@ -161,11 +159,10 @@ Fix any of the following:
   Element does not have text that is visible to screen readers
   aria-label attribute does not exist or is empty
   aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
-  Element's default semantics were not overridden with role=\\"presentation\\"
-  Element's default semantics were not overridden with role=\\"none\\"
+  Element has no title attribute
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.0/link-name?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.2/link-name?application=axeAPI
 
 ────────
 
@@ -175,13 +172,13 @@ Expected the HTML found at $('img[src$=\\"example\\\\.com\\"]') to have no viola
 
 Received:
 
-\\"All page content must be contained by landmarks (region)\\"
+\\"All page content should be contained by landmarks (region)\\"
 
 Fix any of the following:
   Some page content is not contained by landmarks
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.0/region?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.2/region?application=axeAPI
 
 Expected the HTML found at $('img[src=\\"http\\\\:\\\\/\\\\/example\\\\.com\\\\/2\\"]') to have no violations:
 
@@ -189,13 +186,13 @@ Expected the HTML found at $('img[src=\\"http\\\\:\\\\/\\\\/example\\\\.com\\\\/
 
 Received:
 
-\\"All page content must be contained by landmarks (region)\\"
+\\"All page content should be contained by landmarks (region)\\"
 
 Fix any of the following:
   Some page content is not contained by landmarks
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.0/region?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.2/region?application=axeAPI
 
 Expected the HTML found at $('input') to have no violations:
 
@@ -203,11 +200,11 @@ Expected the HTML found at $('input') to have no violations:
 
 Received:
 
-\\"All page content must be contained by landmarks (region)\\"
+\\"All page content should be contained by landmarks (region)\\"
 
 Fix any of the following:
   Some page content is not contained by landmarks
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.0/region?application=axeAPI"
+https://dequeuniversity.com/rules/axe/4.2/region?application=axeAPI"
 `;
