@@ -1,3 +1,8 @@
+
+# 5.0.0
+
+- Update [axe-core to version 4.2.1](https://github.com/nickcolley/jest-axe/pull/169) - thanks [@lpelypenko](https://github.com/lpelypenko).
+
 # 4.1.0
 
 - You can now [filter violations by user impact](https://github.com/nickcolley/jest-axe#setting-the-level-of-user-impact) - thanks [@martiL](https://github.com/martiL).
