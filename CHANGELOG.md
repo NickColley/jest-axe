@@ -1,3 +1,6 @@
+# 5.0.1
+
+- Pin axe-core to version 4.2.1 to prevent unintentional breaking changes from patch versions.
 
 # 5.0.0
 

@@ -1,6 +1,6 @@
 {
   "name": "jest-axe",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Custom Jest matcher for aXe for testing accessibility",
   "repository": "nickcolley/jest-axe",
   "main": "index.js",
@@ -24,7 +24,7 @@
     "node": ">= 10.0.0"
   },
   "dependencies": {
-    "axe-core": "^4.2.1",
+    "axe-core": "4.2.1",
     "chalk": "4.1.0",
     "jest-matcher-utils": "27.0.2",
     "lodash.merge": "4.6.2"
