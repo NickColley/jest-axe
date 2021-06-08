@@ -152,6 +152,34 @@ it('should demonstrate this matcher`s usage with react testing library', async (
 > Note: If you're using `vue testing library` <3.0.0 you should be using the
 > [`cleanup`](https://testing-library.com/docs/vue-testing-library/api#cleanup) method. This method removes the rendered application from the DOM and ensures a clean HTML Document for further testing.
 
+### Testing Angular with [Nx](https://nx.dev/)
+
+```typescript
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { axe } from "jest-axe";
+
+import { SomeComponent } from "./some.component";
+
+describe("SomeComponent", () => {
+  let fixture: ComponentFixture<SomeComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [SomeComponent],
+    });
+
+    fixture = TestBed.createComponent(SomeComponent);
+  });
+
+  it("should create", async () => {
+    const results = await axe(fixture.nativeElement);
+    expect(results).toHaveNoViolations();
+  });
+});
+```
+
+> Note: You may need to extend jest by importing `jest-axe/extend-expect` at `test-setup.ts`
+
 ### Axe configuration
 
 The `axe` function allows options to be set with the [same options as documented in axe-core](https://github.com/dequelabs/axe-core/blob/master/doc/API.md#options-parameter):
