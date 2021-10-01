@@ -8,7 +8,7 @@
 Custom [Jest][Jest] matcher for [axe](https://github.com/dequelabs/axe-core) for testing accessibility
 
 ## ⚠️✋ This project does not guarantee what you build is accessible.
-The GDS Accessibility team found that only [~30% of issues are found by automated testing](https://accessibility.blog.gov.uk/2017/02/24/what-we-found-when-we-tested-tools-on-the-worlds-least-accessible-webpage).
+As of March 2021 axe can detect [~57% of issues through automated testing](https://accessibility.deque.com/hubfs/Accessibility-Coverage-Report.pdf).
 
 Tools like axe are similar to [code linters](https://en.wikipedia.org/wiki/Lint_%28software%29) such as [eslint](https://eslint.org/) or [stylelint](https://stylelint.io/): they can find common issues but cannot guarantee what you build works for users.
 
