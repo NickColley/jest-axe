@@ -1,3 +1,7 @@
+# 6.0.0
+
+- Update axe-core to version 4.4.1 - thanks [@dafnem1](https://github.com/dafnem1).
+
 # 5.0.1
 
 - Pin axe-core to version 4.2.1 to prevent unintentional breaking changes from patch versions.
