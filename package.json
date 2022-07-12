@@ -24,10 +24,13 @@
     "node": ">= 10.0.0"
   },
   "dependencies": {
-    "axe-core": "4.4.1",
-    "chalk": "4.1.0",
-    "jest-matcher-utils": "27.0.2",
-    "lodash.merge": "4.6.2"
+    "axe-core": "4.4.2",
+    "chalk": "^4.1.0",
+    "jest-matcher-utils": "^27.0.2",
+    "lodash.merge": "^4.6.2"
+  },
+  "peerDependencies": {
+    "axe-core": "^4.4.2"
   },
   "devDependencies": {
     "@testing-library/react": "11.2.7",
