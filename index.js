@@ -6,10 +6,10 @@ const { printReceived, matcherHint } = require('jest-matcher-utils')
 
 /**
  * Converts a HTML string or HTML element to a mounted HTML element.
- * @param {Element | string} a HTML element or a HTML string
+ * @param {Element | string} html a HTML element or a HTML string
  * @returns {[Element, function]} a HTML element and a function to restore the document
  */
-function mount (html) {
+function mount(html) {
   if (isHTMLElement(html)) {
     if (document.body.contains(html)) {
       return [html, () => undefined]
@@ -43,13 +43,13 @@ function mount (html) {
  * @param {object} [options.*] Any other property will be passed as the runner configuration (See https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter)
  * @returns {function} returns instance of axe
  */
-function configureAxe (options = {}) {
+function configureAxe(options = {}) {
 
   const { globalOptions = {}, ...runnerOptions } = options
 
   // Set the global configuration for
-  // axe-core 
-  // https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#api-name-axeconfigure 
+  // axe-core
+  // https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#api-name-axeconfigure
   axeCore.configure(globalOptions)
 
 
@@ -60,7 +60,7 @@ function configureAxe (options = {}) {
    * @param {object} [additionalOptions] aXe options to merge with default options
    * @returns {promise} returns promise that will resolve with axe-core#run results object
    */
-  return function axe (html, additionalOptions = {}) {
+  return function axe(html, additionalOptions = {}) {
     const [element, restore] = mount(html)
     const options = merge({}, runnerOptions, additionalOptions)
 
@@ -76,19 +76,19 @@ function configureAxe (options = {}) {
 
 /**
  * Checks if the HTML parameter provided is a HTML element.
- * @param {Element} a HTML element or a HTML string
+ * @param {Element} html a HTML element or a HTML string
  * @returns {boolean} true or false
  */
-function isHTMLElement (html) {
+function isHTMLElement(html) {
   return !!html && typeof html === 'object' && typeof html.tagName === 'string'
 }
 
 /**
  * Checks that the HTML parameter provided is a string that contains HTML.
- * @param {string} a HTML element or a HTML string
+ * @param {string} html a HTML element or a HTML string
  * @returns {boolean} true or false
  */
-function isHTMLString (html) {
+function isHTMLString(html) {
   return typeof html === 'string' && /(<([^>]+)>)/i.test(html)
 }
 
@@ -99,7 +99,7 @@ function isHTMLString (html) {
  * The level of impact can be "minor", "moderate", "serious", or "critical".
  * @returns {object} violations filtered by impact level
  */
-function filterViolations (violations, impactLevels) {
+function filterViolations(violations, impactLevels) {
   if (impactLevels && impactLevels.length > 0) {
     return violations.filter(v => impactLevels.includes(v.impact))
   }
@@ -113,7 +113,7 @@ function filterViolations (violations, impactLevels) {
  * @returns {object} returns Jest matcher object
  */
 const toHaveNoViolations = {
-  toHaveNoViolations (results) {
+  toHaveNoViolations(results) {
     if (typeof results.violations === "undefined") {
       throw new Error("No violations found in aXe results object");
     }
@@ -145,11 +145,11 @@ const toHaveNoViolations = {
             lineBreak +
             chalk.yellow(node.failureSummary) +
             lineBreak + (
-              violation.helpUrl ? 
-              `You can find more information on this issue here: \n${chalk.blue(violation.helpUrl)}` : 
-              ''
+              violation.helpUrl ?
+                `You can find more information on this issue here: \n${chalk.blue(violation.helpUrl)}` :
+                ''
             )
-            
+
           )
         }).join(lineBreak)
 
@@ -165,8 +165,8 @@ const toHaveNoViolations = {
         return
       }
       return matcherHint('.toHaveNoViolations') +
-            '\n\n' +
-            `${formatedViolations}`
+        '\n\n' +
+        `${formatedViolations}`
     }
 
     return { actual: violations, message, pass }
