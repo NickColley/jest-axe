@@ -7,16 +7,19 @@
 
 Custom [Jest][Jest] matcher for [axe](https://github.com/dequelabs/axe-core) for testing accessibility
 
-## ⚠️✋ This project does not guarantee that what you build is accessible.
+## ⚠️✋ This project does not guarantee that what you build is accessible
+
 The GDS Accessibility team found that only [~30% of issues are found by automated testing](https://accessibility.blog.gov.uk/2017/02/24/what-we-found-when-we-tested-tools-on-the-worlds-least-accessible-webpage).
 
 Tools like axe are similar to [code linters](https://en.wikipedia.org/wiki/Lint_%28software%29) such as [eslint](https://eslint.org/) or [stylelint](https://stylelint.io/): they can find common issues but cannot guarantee that what you build works for users.
 
 You'll also need to:
+
 - test your interface with the [assistive technologies that real users use](https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#when-to-test) (see also [WebAIM's survey results](https://webaim.org/projects/screenreadersurvey8/#primary)).
 - include disabled people in user research.
 
-## Installation:
+## Installation
+
 ```bash
 npm install --save-dev jest-axe
 ```
@@ -27,7 +30,7 @@ npm install --save-dev jest-axe
 npm install --save-dev @types/jest-axe
 ```
 
-## Usage:
+## Usage
 
 ```javascript
 const { axe, toHaveNoViolations } = require('jest-axe')
@@ -79,7 +82,7 @@ expect.extend(toHaveNoViolations)
 it('should demonstrate this matcher`s usage with enzyme', async () => {
   const wrapper = mount(<App/>)
   const results = await axe(wrapper.getDOMNode())
-  
+
   expect(results).toHaveNoViolations()
 })
 ```
@@ -97,7 +100,7 @@ expect.extend(toHaveNoViolations)
 it('should demonstrate this matcher`s usage with react testing library', async () => {
   const { container } = render(<App/>)
   const results = await axe(container)
-  
+
   expect(results).toHaveNoViolations()
 })
 ```
@@ -111,7 +114,7 @@ If you're using [React Portals](https://reactjs.org/docs/portals.html), use the 
 it('should work with React Portals as well', async () => {
   const { baseElement } = render(<App/>)
   const results = await axe(baseElement)
-  
+
   expect(results).toHaveNoViolations()
 })
 ```
@@ -145,10 +148,11 @@ expect.extend(toHaveNoViolations)
 it('should demonstrate this matcher`s usage with react testing library', async () => {
   const { container } = render(<App/>)
   const results = await axe(container)
-  
+
   expect(results).toHaveNoViolations()
 })
 ```
+
 > Note: If you're using `vue testing library` <3.0.0 you should be using the
 > [`cleanup`](https://testing-library.com/docs/vue-testing-library/api#cleanup) method. This method removes the rendered application from the DOM and ensures a clean HTML Document for further testing.
 
@@ -253,9 +257,9 @@ it('should demonstrate this matcher`s usage with a default config', async () => 
 })
 ```
 
-### Setting custom rules and checks.
+### Setting custom rules and checks
 
-The configuration object passed to `configureAxe`, accepts a `globalOptions` property to configure the format of the data used by axe and to add custom checks and rules. The property value is the same as the parameter passed to [axe.configure](https://github.com/dequelabs/axe-core/blob/master/doc/API.md#parameters-1). 
+The configuration object passed to `configureAxe`, accepts a `globalOptions` property to configure the format of the data used by axe and to add custom checks and rules. The property value is the same as the parameter passed to [axe.configure](https://github.com/dequelabs/axe-core/blob/master/doc/API.md#parameters-1).
 
 ```javascript
 // Global helper file (axe-helper.js)
@@ -271,7 +275,7 @@ const axe = configureAxe({
 module.exports = axe
 ```
 
-### Setting the level of user impact.
+### Setting the level of user impact
 
 An array which defines which [impact](https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md) level should be considered. This ensures that only violations with a specific impact on the user are considered. The level of impact can be "minor", "moderate", "serious", or "critical".
 
@@ -290,6 +294,7 @@ module.exports = axe
 Refer to [Developing Axe-core Rules](https://github.com/dequelabs/axe-core/blob/master/doc/rule-development.md) for instructions on how to develop custom rules and checks.
 
 ## Thanks
+
 - [Jest][Jest] for the great test runner that allows extending matchers.
 - [axe](https://www.deque.com/axe/) for the wonderful axe-core that makes it so easy to do this.
 - Government Digital Service for making coding in the open the default.
