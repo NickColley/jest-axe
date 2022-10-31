@@ -19,7 +19,7 @@ Fix any of the following:
   Element's default semantics were not overridden with role=\\"none\\" or role=\\"presentation\\"
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.4/image-alt?application=axeAPI"
+https://dequeuniversity.com/rules/axe/4.5/image-alt?application=axeAPI"
 `;
 
 exports[`Vue renders correctly 1`] = `
@@ -41,7 +41,7 @@ Fix any of the following:
   Element's default semantics were not overridden with role=\\"none\\" or role=\\"presentation\\"
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.4/image-alt?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.5/image-alt?application=axeAPI
 
 ────────
 
@@ -57,5 +57,5 @@ Fix any of the following:
   Some page content is not contained by landmarks
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.4/region?application=axeAPI"
+https://dequeuniversity.com/rules/axe/4.5/region?application=axeAPI"
 `;
