@@ -1,16 +1,14 @@
-/* eslint-env jest */
+const { configureAxe, axe, toHaveNoViolations } = require("../index.js");
 
-const { configureAxe, axe, toHaveNoViolations } = require('../index.js')
-
-describe('jest-axe', () => {
-  describe('axe', () => {
+describe("jest-axe", () => {
+  describe("axe", () => {
     const failingHtmlExample = `
      <html>
        <body>
          <a href="#"></a>
        </body>
      </html>
-    `
+    `;
 
     const failingExtendedHtmlExample = `
      <html>
@@ -19,7 +17,7 @@ describe('jest-axe', () => {
          <img src="#"/>
        </body>
      </html>
-    `
+    `;
 
     const goodHtmlExample = `
      <html>
@@ -29,219 +27,226 @@ describe('jest-axe', () => {
         </main>
        </body>
      </html>
-    `
+    `;
 
     const linkNameAxe = configureAxe({
       rules: {
-        'link-name': { enabled: false }
-      }
-    })
+        "link-name": { enabled: false },
+      },
+    });
 
-    it('can be configured for global configs', async () => {
-      const results = await linkNameAxe(failingHtmlExample)
-      expect(results.violations).toEqual([])
-    })
+    it("can be configured for global configs", async () => {
+      const results = await linkNameAxe(failingHtmlExample);
+      expect(results.violations).toEqual([]);
+    });
 
-    it('can pass in merged configurations to configured axe', async () => {
+    it("can pass in merged configurations to configured axe", async () => {
       const results = await linkNameAxe(failingExtendedHtmlExample, {
         rules: {
-          'image-alt': { enabled: false },
-          'region': { enabled: false }
-        }
-      })
-      expect(results.violations).toEqual([])
-    })
+          "image-alt": { enabled: false },
+          region: { enabled: false },
+        },
+      });
+      expect(results.violations).toEqual([]);
+    });
 
-    it('returns an axe results object', async () => {
-      const results = await axe(failingHtmlExample)
-      expect(typeof results).toBe('object')
-      expect(typeof results.violations).toBe('object')
-    })
+    it("returns an axe results object", async () => {
+      const results = await axe(failingHtmlExample);
+      expect(typeof results).toBe("object");
+      expect(typeof results.violations).toBe("object");
+    });
 
-    it('should not mutate the content of document.body permanently', async () => {
-      const el = document.body.appendChild(document.createElement("div"))
-      await axe(goodHtmlExample)
-      expect(document.body.childElementCount).toBe(1)
-      expect(document.body.firstChild).toEqual(el)
-    })
+    it("should not mutate the content of document.body permanently", async () => {
+      const el = document.body.appendChild(document.createElement("div"));
+      await axe(goodHtmlExample);
+      expect(document.body.childElementCount).toBe(1);
+      expect(document.body.firstChild).toEqual(el);
+    });
 
-    it('returns violations for failing html example', async () => {
-      const results = await axe(failingHtmlExample)
-      const violation = results.violations[0]
-      expect(violation.id).toBe('link-name')
-      expect(violation.description).toBe('Ensures links have discernible text')
-    })
+    it("returns violations for failing html example", async () => {
+      const results = await axe(failingHtmlExample);
+      const violation = results.violations[0];
+      expect(violation.id).toBe("link-name");
+      expect(violation.description).toBe("Ensures links have discernible text");
+    });
 
-    it('can ignore allowed failures', async () => {
+    it("can ignore allowed failures", async () => {
       const results = await axe(failingHtmlExample, {
         rules: {
-          'link-name': { enabled: false }
-        }
-      })
-      expect(results.violations).toEqual([])
-    })
+          "link-name": { enabled: false },
+        },
+      });
+      expect(results.violations).toEqual([]);
+    });
 
-    it('returns no violations for a good html example', async () => {
-      const results = await axe(goodHtmlExample)
-      expect(results.violations).toEqual([])
-    })
+    it("returns no violations for a good html example", async () => {
+      const results = await axe(goodHtmlExample);
+      expect(results.violations).toEqual([]);
+    });
 
-    it('throws if input is not a string, vue element, react element, or react testing library render', () => {
+    it("throws if input is not a string, vue element, react element, or react testing library render", () => {
       expect(() => {
-        axe({})
-      }).toThrow('html parameter should be an HTML string or an HTML element')
-    })
+        axe({});
+      }).toThrow("html parameter should be an HTML string or an HTML element");
+    });
 
-    it('throws with non-html input', () => {
+    it("throws with non-html input", () => {
       expect(() => {
-        axe('Hello, World')
-      }).toThrow('html parameter ("Hello, World") has no elements')
-    })
+        axe("Hello, World");
+      }).toThrow('html parameter ("Hello, World") has no elements');
+    });
 
-    it('should not mutate previous options', async () => {
+    it("should not mutate previous options", async () => {
       let results = await axe(failingHtmlExample, {
         rules: {
-          'link-name': { enabled: false }
-        }
-      })
-      expect(results.violations).toEqual([])
+          "link-name": { enabled: false },
+        },
+      });
+      expect(results.violations).toEqual([]);
 
       const configuredAxe = configureAxe({
         rules: {
-          'link-name': { enabled: false }
-        }
-      })
+          "link-name": { enabled: false },
+        },
+      });
 
       results = await configuredAxe(failingHtmlExample, {
         rules: {
-          'link-name': { enabled: false }
-        }
-      })
-      expect(results.violations).toEqual([])
+          "link-name": { enabled: false },
+        },
+      });
+      expect(results.violations).toEqual([]);
 
-      results = await axe(failingHtmlExample)
-      const violation = results.violations[0]
-      expect(violation.id).toBe('link-name')
-      expect(violation.description).toBe('Ensures links have discernible text')
-    })
-  })
+      results = await axe(failingHtmlExample);
+      const violation = results.violations[0];
+      expect(violation.id).toBe("link-name");
+      expect(violation.description).toBe("Ensures links have discernible text");
+    });
+  });
 
-  describe('toHaveNoViolations', () => {
+  describe("toHaveNoViolations", () => {
     const failingAxeResults = {
       violations: [
         {
-          id: 'image-alt',
-          impact: 'critical',
+          id: "image-alt",
+          impact: "critical",
           tags: [
-            'cat.text-alternatives',
-            'wcag2a',
-            'wcag111',
-            'section508',
-            'section508.22.a'
+            "cat.text-alternatives",
+            "wcag2a",
+            "wcag111",
+            "section508",
+            "section508.22.a",
           ],
-          description: 'Ensures <img> elements have alternate text or a role of none or presentation',
-          help: 'Images must have alternate text',
-          helpUrl: 'https://dequeuniversity.com/rules/axe/2.6/image-alt?application=axeAPI',
+          description:
+            "Ensures <img> elements have alternate text or a role of none or presentation",
+          help: "Images must have alternate text",
+          helpUrl:
+            "https://dequeuniversity.com/rules/axe/2.6/image-alt?application=axeAPI",
           nodes: [
             {
               any: [
                 {
-                  id: 'has-alt',
+                  id: "has-alt",
                   data: null,
                   relatedNodes: [],
-                  impact: 'critical',
-                  message: 'Element does not have an alt attribute'
+                  impact: "critical",
+                  message: "Element does not have an alt attribute",
                 },
                 {
-                  id: 'aria-label',
+                  id: "aria-label",
                   data: null,
                   relatedNodes: [],
-                  impact: 'serious',
-                  message: 'aria-label attribute does not exist or is empty'
+                  impact: "serious",
+                  message: "aria-label attribute does not exist or is empty",
                 },
                 {
-                  id: 'aria-labelledby',
+                  id: "aria-labelledby",
                   data: null,
                   relatedNodes: [],
-                  impact: 'serious',
-                  message: 'aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible'
+                  impact: "serious",
+                  message:
+                    "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible",
                 },
                 {
-                  id: 'non-empty-title',
+                  id: "non-empty-title",
                   data: null,
                   relatedNodes: [],
-                  impact: 'serious',
-                  message: 'Element has no title attribute or the title attribute is empty'
+                  impact: "serious",
+                  message:
+                    "Element has no title attribute or the title attribute is empty",
                 },
                 {
-                  id: 'role-presentation',
+                  id: "role-presentation",
                   data: null,
                   relatedNodes: [],
-                  impact: 'minor',
-                  message: 'Element\'s default semantics were not overridden with role="presentation"'
+                  impact: "minor",
+                  message:
+                    'Element\'s default semantics were not overridden with role="presentation"',
                 },
                 {
-                  id: 'role-none',
+                  id: "role-none",
                   data: null,
                   relatedNodes: [],
-                  impact: 'minor',
-                  message: 'Element\'s default semantics were not overridden with role="none"'
-                }
+                  impact: "minor",
+                  message:
+                    'Element\'s default semantics were not overridden with role="none"',
+                },
               ],
               all: [],
               none: [],
-              impact: 'critical',
+              impact: "critical",
               html: '<img src="">',
-              target: [ 'body > img' ],
-              failureSummary: 'Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element has no title attribute or the title attribute is empty\n  Element\'s default semantics were not overridden with role="presentation"\n  Element\'s default semantics were not overridden with role="none"'
-            }
-          ]
-        }
-      ]
-    }
+              target: ["body > img"],
+              failureSummary:
+                'Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty or not visible\n  Element has no title attribute or the title attribute is empty\n  Element\'s default semantics were not overridden with role="presentation"\n  Element\'s default semantics were not overridden with role="none"',
+            },
+          ],
+        },
+      ],
+    };
 
     const successfulAxeResults = {
-      violations: []
-    }
-    it('returns a jest matcher object with object', () => {
-      const matcherFunction = toHaveNoViolations.toHaveNoViolations
-      expect(matcherFunction).toBeDefined()
-      expect(typeof matcherFunction).toBe('function')
-    })
+      violations: [],
+    };
+    it("returns a jest matcher object with object", () => {
+      const matcherFunction = toHaveNoViolations.toHaveNoViolations;
+      expect(matcherFunction).toBeDefined();
+      expect(typeof matcherFunction).toBe("function");
+    });
 
-    it('throws error if non axe results object is passed', () => {
-      const matcherFunction = toHaveNoViolations.toHaveNoViolations
+    it("throws error if non axe results object is passed", () => {
+      const matcherFunction = toHaveNoViolations.toHaveNoViolations;
       expect(() => {
-        matcherFunction({})
-      }).toThrow('No violations found in aXe results object')
-    })
+        matcherFunction({});
+      }).toThrow("No violations found in aXe results object");
+    });
 
-    it('returns pass as true when no violations are present', () => {
-      const matcherFunction = toHaveNoViolations.toHaveNoViolations
-      const matcherOutput = matcherFunction(successfulAxeResults)
-      expect(matcherOutput.pass).toBe(true)
-    })
+    it("returns pass as true when no violations are present", () => {
+      const matcherFunction = toHaveNoViolations.toHaveNoViolations;
+      const matcherOutput = matcherFunction(successfulAxeResults);
+      expect(matcherOutput.pass).toBe(true);
+    });
 
-    it('returns same violations that are passed in the results object', () => {
-      const matcherFunction = toHaveNoViolations.toHaveNoViolations
-      const matcherOutput = matcherFunction(failingAxeResults)
-      expect(matcherOutput.actual).toBe(failingAxeResults.violations)
-    })
+    it("returns same violations that are passed in the results object", () => {
+      const matcherFunction = toHaveNoViolations.toHaveNoViolations;
+      const matcherOutput = matcherFunction(failingAxeResults);
+      expect(matcherOutput.actual).toBe(failingAxeResults.violations);
+    });
 
-    it('returns correctly formatted message when violations are present', () => {
-      const matcherFunction = toHaveNoViolations.toHaveNoViolations
-      const matcherOutput = matcherFunction(failingAxeResults)
-      expect(typeof matcherOutput.message).toBe('function')
-      expect(matcherOutput.message()).toMatchSnapshot()
-    })
+    it("returns correctly formatted message when violations are present", () => {
+      const matcherFunction = toHaveNoViolations.toHaveNoViolations;
+      const matcherOutput = matcherFunction(failingAxeResults);
+      expect(typeof matcherOutput.message).toBe("function");
+      expect(matcherOutput.message()).toMatchSnapshot();
+    });
 
-    it('returns pass as false when violations are present', () => {
-      const matcherFunction = toHaveNoViolations.toHaveNoViolations
-      const matcherOutput = matcherFunction(failingAxeResults)
-      expect(matcherOutput.pass).toBe(false)
-    })
+    it("returns pass as false when violations are present", () => {
+      const matcherFunction = toHaveNoViolations.toHaveNoViolations;
+      const matcherOutput = matcherFunction(failingAxeResults);
+      expect(matcherOutput.pass).toBe(false);
+    });
 
-    it('returns properly formatted text with more complex example', async () => {
+    it("returns properly formatted text with more complex example", async () => {
       const complexHtmlExample = `
         <html>
           <body>
@@ -253,128 +258,122 @@ describe('jest-axe', () => {
             <input type="text"/>
           </body>
         </html>
-      `
-      const results = await axe(complexHtmlExample)
-      const matcherFunction = toHaveNoViolations.toHaveNoViolations
-      const matcherOutput = matcherFunction(results)
-      expect(matcherOutput.message()).toMatchSnapshot()
-    })
-  })
-  describe('readme', () => {
-    describe('first readme example', () => {
+      `;
+      const results = await axe(complexHtmlExample);
+      const matcherFunction = toHaveNoViolations.toHaveNoViolations;
+      const matcherOutput = matcherFunction(results);
+      expect(matcherOutput.message()).toMatchSnapshot();
+    });
+  });
+  describe("readme", () => {
+    describe("first readme example", () => {
+      expect.extend(toHaveNoViolations);
 
-      expect.extend(toHaveNoViolations)
-
-      it('should demonstrate this matcher`s usage', async () => {
-        const render = () => '<img src="#"/>'
+      it("should demonstrate this matcher`s usage", async () => {
+        const render = () => '<img src="#"/>';
 
         // pass anything that outputs html to axe
-        const html = render()
+        const html = render();
 
-        const results = await axe(html)
+        const results = await axe(html);
 
         expect(() => {
-          expect(results).toHaveNoViolations()
-        }).toThrowErrorMatchingSnapshot()
-      })
-    })
-    describe('readme axe config example', () => {
+          expect(results).toHaveNoViolations();
+        }).toThrowErrorMatchingSnapshot();
+      });
+    });
+    describe("readme axe config example", () => {
+      expect.extend(toHaveNoViolations);
 
-      expect.extend(toHaveNoViolations)
-
-      it('should demonstrate this matcher`s usage with a custom config', async () => {
+      it("should demonstrate this matcher`s usage with a custom config", async () => {
         const render = () => `
           <div>
             <img src="#"/>
           </div>
-        `
+        `;
 
         // pass anything that outputs html to axe
-        const html = render()
+        const html = render();
 
         const results = await axe(html, {
           rules: {
             // for demonstration only, don't disable rules that need fixing.
-            'image-alt': { enabled: false },
-            'region': { enabled: false }
-          }
-        })
+            "image-alt": { enabled: false },
+            region: { enabled: false },
+          },
+        });
 
-        expect(results).toHaveNoViolations()
-      })
-    })
-    describe('readme axe global config example', () => {
+        expect(results).toHaveNoViolations();
+      });
+    });
+    describe("readme axe global config example", () => {
       // Global helper file (axe-helper.js)
 
       const configuredAxe = configureAxe({
         rules: {
           // for demonstration only, don't disable rules that need fixing.
-          'image-alt': { enabled: false },
-          'region': { enabled: false }
-        }
-      })
+          "image-alt": { enabled: false },
+          region: { enabled: false },
+        },
+      });
 
-      const exportedAxe = configuredAxe
+      const exportedAxe = configuredAxe;
 
       // Individual test file (test.js)
-      const axe = exportedAxe // require('./axe-helper.js')
+      const axe = exportedAxe; // require('./axe-helper.js')
 
-      expect.extend(toHaveNoViolations)
+      expect.extend(toHaveNoViolations);
 
-      it('should demonstrate this matcher`s usage with a default config', async () => {
+      it("should demonstrate this matcher`s usage with a default config", async () => {
         const render = () => `
           <div>
             <img src="#"/>
           </div>
-        `
+        `;
 
         // pass anything that outputs html to axe
-        const html = render()
+        const html = render();
 
-        expect(await axe(html)).toHaveNoViolations()
-      })
-    })
-    describe('configure custom rule', () => {
-      
-      expect.extend(toHaveNoViolations)
+        expect(await axe(html)).toHaveNoViolations();
+      });
+    });
+    describe("configure custom rule", () => {
+      expect.extend(toHaveNoViolations);
 
-      it('should report custom rules', async () => {
-
+      it("should report custom rules", async () => {
         const check = {
-          id: 'demo-has-data',
+          id: "demo-has-data",
           evaluate(node) {
-            return node.hasAttribute('data-demo-rule');
-            
+            return node.hasAttribute("data-demo-rule");
           },
           metadata: {
-            impact: 'serious',
+            impact: "serious",
             messages: {
-              fail: 'Error!',
+              fail: "Error!",
             },
           },
-        }
+        };
         const rule = {
-          id: 'demo-rule',
-          selector: '.demo',
+          id: "demo-rule",
+          selector: ".demo",
           enabled: false,
-          tags: ['demo-rules'],
-          any: ['demo-has-data'],
+          tags: ["demo-rules"],
+          any: ["demo-has-data"],
           metadata: {
-            description: 'Demo check',
-            help: 'Demo check',
+            description: "Demo check",
+            help: "Demo check",
           },
-        }
+        };
 
         const configuredAxe = configureAxe({
           globalOptions: {
             rules: [rule],
-            checks: [check]
+            checks: [check],
           },
           rules: {
-            'demo-rule': { enabled: true }
-          }
-        })
-
+            "demo-rule": { enabled: true },
+          },
+        });
 
         const html = `
         <html>
@@ -384,22 +383,22 @@ describe('jest-axe', () => {
             </main>
           </body>
         </html>
-        `
+        `;
 
-        const results = await configuredAxe(html)
-        expect(results.violations[0].id).toBe('demo-rule')
-      })
-    })
+        const results = await configuredAxe(html);
+        expect(results.violations[0].id).toBe("demo-rule");
+      });
+    });
 
-    describe('custom configuration for user impact', () => {
+    describe("custom configuration for user impact", () => {
       const axe = configureAxe({
         // How serious the violation is. Can be one of "minor", "moderate", "serious", or "critical".
-        impactLevels: ['critical']
-      })
+        impactLevels: ["critical"],
+      });
 
-      expect.extend(toHaveNoViolations)
+      expect.extend(toHaveNoViolations);
 
-      it('should pass the test, because only critical violations are noted.', async () => {
+      it("should pass the test, because only critical violations are noted.", async () => {
         // 1 x moderate violation -> https://dequeuniversity.com/rules/axe/4.0/region?application=axeAPI
         const render = () => `
           <div>
@@ -407,13 +406,13 @@ describe('jest-axe', () => {
               <span> some content</span>
             </div>
           </div>
-        `
+        `;
 
         // pass anything that outputs html to axe
-        const html = render()
+        const html = render();
 
-        expect(await axe(html)).toHaveNoViolations()
-      })
-    })
-  })
-})
+        expect(await axe(html)).toHaveNoViolations();
+      });
+    });
+  });
+});
