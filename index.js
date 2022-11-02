@@ -47,11 +47,20 @@ function configureAxe (options = {}) {
 
   const { globalOptions = {}, ...runnerOptions } = options
 
-  // Set the global configuration for
-  // axe-core 
+  // Set the global configuration for axe-core 
   // https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#api-name-axeconfigure 
-  axeCore.configure(globalOptions)
-
+  const { checks = [], ...otherGlobalOptions } = globalOptions
+  axeCore.configure({
+    checks: [
+      {
+        // color contrast checking doesnt work in a jsdom environment.
+        id: 'color-contrast',
+        enabled: false
+      },
+      ...checks
+    ],
+    ...otherGlobalOptions
+  })
 
   /**
    * Small wrapper for axe-core#run that enables promises (required for Jest),

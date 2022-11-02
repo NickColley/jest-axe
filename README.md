@@ -289,6 +289,10 @@ module.exports = axe
 
 Refer to [Developing Axe-core Rules](https://github.com/dequelabs/axe-core/blob/master/doc/rule-development.md) for instructions on how to develop custom rules and checks.
 
+## Checks that do not work in jest-axe
+
+Color contrast checks do not work in JSDOM so are turned off in jest-axe. 
+
 ## Thanks
 - [Jest][Jest] for the great test runner that allows extending matchers.
 - [axe](https://www.deque.com/axe/) for the wonderful axe-core that makes it so easy to do this.
