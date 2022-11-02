@@ -5,6 +5,11 @@ Update main dependencies:
 - chalk updated from version 4.1.0 to 4.1.2
 - jest-matcher-utils updated from version 27.0.2 to 29.2.2
 
+Breaking changes:
+- axe-core includes new rules and checks which may need to be fixed or turned off
+- axe-core help messages updates will change your snapshot output
+- no longer support Node.js 10 and 12
+
 # 6.0.1
 
 - [Fix "Not implemented: window.computedStyle(elt, pseudoElt)" errors](https://github.com/NickColley/jest-axe/pull/252/commits/48824b2400b23bf2ff11bcccd090cf868b4fd8ec).
