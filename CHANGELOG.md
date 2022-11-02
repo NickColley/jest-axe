@@ -1,3 +1,14 @@
+# 7.0.0
+
+Update main dependencies:
+- axe-core from version 4.4.1 to 4.5.1 - thanks [@jbchr](https://github.com/jbchr).
+- chalk updated from version 4.1.0 to 4.1.2
+- jest-matcher-utils updated from version 27.0.2 to 29.2.2
+
+# 6.0.1
+
+- [Fix "Not implemented: window.computedStyle(elt, pseudoElt)" errors](https://github.com/NickColley/jest-axe/pull/252/commits/48824b2400b23bf2ff11bcccd090cf868b4fd8ec).
+
 # 6.0.0
 
 - Update axe-core to version 4.4.1 - thanks [@dafnem1](https://github.com/dafnem1).
