@@ -27,7 +27,7 @@ exports[`React renders correctly 1`] = `
 
 Expected the HTML found at $('img') to have no violations:
 
-<img src=\\"#\\" data-reactroot=\\"\\">
+<img src=\\"#\\">
 
 Received:
 
@@ -47,7 +47,7 @@ https://dequeuniversity.com/rules/axe/4.4/image-alt?application=axeAPI
 
 Expected the HTML found at $('img') to have no violations:
 
-<img src=\\"#\\" data-reactroot=\\"\\">
+<img src=\\"#\\">
 
 Received:
 
