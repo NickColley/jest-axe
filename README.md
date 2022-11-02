@@ -18,7 +18,7 @@ You'll also need to:
 
 ## Installation:
 ```bash
-npm install --save-dev jest-axe
+npm install --save-dev jest jest-axe jest-environment-jsdom
 ```
 
 [TypeScript](https://www.typescriptlang.org/) users can install the community maintained types package:
@@ -30,6 +30,9 @@ npm install --save-dev @types/jest-axe
 ## Usage:
 
 ```javascript
+/**
+ * @jest-environment jsdom
+ */
 const { axe, toHaveNoViolations } = require('jest-axe')
 
 expect.extend(toHaveNoViolations)
