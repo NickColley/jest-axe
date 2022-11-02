@@ -8,6 +8,6 @@ point directly to `jest-axe/extend-expect`
 
 */
 
-const { toHaveNoViolations } = require('jest-axe')
+const { toHaveNoViolations } = require("./");
 
-expect.extend(toHaveNoViolations)
+expect.extend(toHaveNoViolations);
