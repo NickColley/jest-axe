@@ -34,8 +34,6 @@
     "@testing-library/vue": "5.6.2",
     "@vue/server-test-utils": "1.1.1",
     "@vue/test-utils": "1.1.1",
-    "enzyme": "3.11.0",
-    "enzyme-adapter-react-16": "1.15.5",
     "jest": "26.6.2",
     "react": "16.14.0",
     "react-dom": "16.13.0",

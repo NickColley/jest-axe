@@ -38,20 +38,4 @@ describe('React', () => {
 
     expect(results).toHaveNoViolations()
   })
-
-  test('renders with enzyme wrapper correctly', async () => {
-    const { mount, configure } = require('enzyme')
-    const Adapter = require('enzyme-adapter-react-16')
-
-    configure({ adapter: new Adapter() })
-
-    const element = React.createElement('img', { src: '#' })
-    const wrapper = mount(element)
-    const results = await axe(wrapper.getDOMNode())
-
-    expect(() => {
-      expect(results).toHaveNoViolations()
-    }).toThrowErrorMatchingSnapshot()
-  })
-
 })

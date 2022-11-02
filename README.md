@@ -66,24 +66,6 @@ it('should demonstrate this matcher`s usage with react', async () => {
 })
 ```
 
-### Testing React with [Enzyme](https://enzymejs.github.io/enzyme/)
-
-```javascript
-const React = require('react')
-const App = require('./app')
-
-const { mount } = require('enzyme')
-const { axe, toHaveNoViolations } = require('jest-axe')
-expect.extend(toHaveNoViolations)
-
-it('should demonstrate this matcher`s usage with enzyme', async () => {
-  const wrapper = mount(<App/>)
-  const results = await axe(wrapper.getDOMNode())
-  
-  expect(results).toHaveNoViolations()
-})
-```
-
 ### Testing React with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 
 ```javascript
