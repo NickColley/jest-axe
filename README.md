@@ -198,6 +198,25 @@ it('should demonstrate this matcher`s usage with a custom config', async () => {
 })
 ```
 
+### Testing isolated components
+
+> All page content must be contained by landmarks (region)
+
+When testing with aXe sometimes it assumes you are testing a page. This then results in unexpected violations for landmarks for testing isolation components.
+
+You can disable this behaviour with the `region` rule:
+
+```javascript
+const { configureAxe } = require('jest-axe')
+
+const axe = configureAxe({
+  rules: {
+    // disable landmark rules when testing isolated components.
+    'region': { enabled: false }
+  }
+})
+```
+
 ## Setting global configuration
 
 If you find yourself repeating the same options multiple times, you can export a version of the `axe` function with defaults set.
