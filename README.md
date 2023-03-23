@@ -168,6 +168,21 @@ describe("SomeComponent", () => {
 
 > Note: You may need to extend jest by importing `jest-axe/extend-expect` at `test-setup.ts`
 
+### Usage with jest.useFakeTimers() or mocking setTimeout
+
+> thrown: "Exceeded timeout of 5000 ms for a test.
+> Use jest.setTimeout(newTimeout) to increase the timeout value, if this is a long-running test."
+
+aXe core does not work when timers (setTimeout) are mocked. When using `jest.useFakeTimers()` aXe core will timeout often causing failing tests.
+
+We recommend renabling the timers temporarily for aXe:
+
+```javascript
+jest.useRealTimers();
+const results = await axe(wrapper.element);
+jest.useFakeTimers();
+```
+
 ### Axe configuration
 
 The `axe` function allows options to be set with the [same options as documented in axe-core](https://github.com/dequelabs/axe-core/blob/master/doc/API.md#options-parameter):
