@@ -15,6 +15,10 @@ You'll also need to:
 - test your interface with the [assistive technologies that real users use](https://www.gov.uk/service-manual/technology/testing-with-assistive-technologies#when-to-test) (see also [WebAIM's survey results](https://webaim.org/projects/screenreadersurvey8/#primary)).
 - include disabled people in user research.
 
+### Checks that do not work in jest-axe
+
+Color contrast checks do not work in JSDOM so are turned off in jest-axe.
+
 ## Installation:
 ```bash
 npm install --save-dev jest jest-axe jest-environment-jsdom
@@ -194,6 +198,25 @@ it('should demonstrate this matcher`s usage with a custom config', async () => {
 })
 ```
 
+### Testing isolated components
+
+> All page content must be contained by landmarks (region)
+
+When testing with aXe sometimes it assumes you are testing a page. This then results in unexpected violations for landmarks for testing isolation components.
+
+You can disable this behaviour with the `region` rule:
+
+```javascript
+const { configureAxe } = require('jest-axe')
+
+const axe = configureAxe({
+  rules: {
+    // disable landmark rules when testing isolated components.
+    'region': { enabled: false }
+  }
+})
+```
+
 ## Setting global configuration
 
 If you find yourself repeating the same options multiple times, you can export a version of the `axe` function with defaults set.
@@ -272,10 +295,6 @@ module.exports = axe
 ```
 
 Refer to [Developing Axe-core Rules](https://github.com/dequelabs/axe-core/blob/master/doc/rule-development.md) for instructions on how to develop custom rules and checks.
-
-## Checks that do not work in jest-axe
-
-Color contrast checks do not work in JSDOM so are turned off in jest-axe. 
 
 ## Thanks
 - [Jest][Jest] for the great test runner that allows extending matchers.
