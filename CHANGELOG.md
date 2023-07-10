@@ -1,3 +1,7 @@
+# 8.0.0
+
+- Update axe-core to version 4.7.2 - thanks [@hpinkos](https://github.com/hpinkos) and [@philcon93](https://github.com/philcon93).
+
 # 7.0.0
 
 Update main dependencies:
