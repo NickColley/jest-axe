@@ -1,61 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`React renders a react testing library container correctly 1`] = `
-"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
+"expect(received).toHaveNoViolations(expected)
 
 Expected the HTML found at $('img') to have no violations:
 
-[90m<img src="#">[39m
+<img src="#">
 
 Received:
 
-[31m"Images must have alternate text (image-alt)"[39m
+"Images must have alternate text (image-alt)"
 
-[33mFix any of the following:[39m
-[33m  Element does not have an alt attribute[39m
-[33m  aria-label attribute does not exist or is empty[39m
-[33m  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty[39m
-[33m  Element has no title attribute[39m
-[33m  Element's default semantics were not overridden with role="none" or role="presentation"[39m
+Fix any of the following:
+  Element does not have an alt attribute
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Element has no title attribute
+  Element's default semantics were not overridden with role="none" or role="presentation"
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/4.7/image-alt?application=axeAPI[39m"
+https://dequeuniversity.com/rules/axe/4.7/image-alt?application=axeAPI"
 `;
 
 exports[`React renders correctly 1`] = `
-"[2mexpect([22m[31mreceived[39m[2m).toHaveNoViolations([22m[32mexpected[39m[2m)[22m
+"expect(received).toHaveNoViolations(expected)
 
 Expected the HTML found at $('img') to have no violations:
 
-[90m<img src="#">[39m
+<img src="#">
 
 Received:
 
-[31m"Images must have alternate text (image-alt)"[39m
+"Images must have alternate text (image-alt)"
 
-[33mFix any of the following:[39m
-[33m  Element does not have an alt attribute[39m
-[33m  aria-label attribute does not exist or is empty[39m
-[33m  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty[39m
-[33m  Element has no title attribute[39m
-[33m  Element's default semantics were not overridden with role="none" or role="presentation"[39m
+Fix any of the following:
+  Element does not have an alt attribute
+  aria-label attribute does not exist or is empty
+  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+  Element has no title attribute
+  Element's default semantics were not overridden with role="none" or role="presentation"
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/4.7/image-alt?application=axeAPI[39m
+https://dequeuniversity.com/rules/axe/4.7/image-alt?application=axeAPI
 
 ────────
 
 Expected the HTML found at $('img') to have no violations:
 
-[90m<img src="#">[39m
+<img src="#">
 
 Received:
 
-[31m"All page content should be contained by landmarks (region)"[39m
+"All page content should be contained by landmarks (region)"
 
-[33mFix any of the following:[39m
-[33m  Some page content is not contained by landmarks[39m
+Fix any of the following:
+  Some page content is not contained by landmarks
 
 You can find more information on this issue here: 
-[34mhttps://dequeuniversity.com/rules/axe/4.7/region?application=axeAPI[39m"
+https://dequeuniversity.com/rules/axe/4.7/region?application=axeAPI"
 `;

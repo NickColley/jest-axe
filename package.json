@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "test": "npm run lint && npm run jest",
-    "jest": "jest",
+    "jest": "FORCE_COLOR=0 jest",
     "lint": "eslint *.js __tests__/**/*.js && prettier --check *.js __tests__/**/*.js"
   },
   "keywords": [
