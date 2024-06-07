@@ -1,3 +1,8 @@
+# 9.0.0
+
+- Update axe-core to version 4.9.1 - thanks [@1Copenut](https://github.com/1Copenut) and [@longmatthewh](https://github.com/longmatthewh).
+- Update minimum Node.js version to 16
+
 # 8.0.0
 
 - Update axe-core to version 4.7.2 - thanks [@hpinkos](https://github.com/hpinkos) and [@philcon93](https://github.com/philcon93).
