@@ -23,7 +23,7 @@
   "author": "Nick Colley",
   "license": "MIT",
   "engines": {
-    "node": ">= 14.0.0"
+    "node": ">= 16.0.0"
   },
   "dependencies": {
     "axe-core": "4.7.2",
