@@ -9,7 +9,7 @@ Expected the HTML found at $('img') to have no violations:
 
 Received:
 
-"Images must have alternate text (image-alt)"
+"Images must have alternative text (image-alt)"
 
 Fix any of the following:
   Element does not have an alt attribute
@@ -19,7 +19,7 @@ Fix any of the following:
   Element's default semantics were not overridden with role="none" or role="presentation"
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.9/image-alt?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI
 
 ────────
 
@@ -35,7 +35,7 @@ Fix any of the following:
   Some page content is not contained by landmarks
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI"
+https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
 `;
 
 exports[`jest-axe toHaveNoViolations returns correctly formatted message when violations are present 1`] = `
@@ -70,7 +70,7 @@ Expected the HTML found at $('img[src$="example.com"]') to have no violations:
 
 Received:
 
-"Images must have alternate text (image-alt)"
+"Images must have alternative text (image-alt)"
 
 Fix any of the following:
   Element does not have an alt attribute
@@ -80,7 +80,7 @@ Fix any of the following:
   Element's default semantics were not overridden with role="none" or role="presentation"
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.9/image-alt?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI
 
 Expected the HTML found at $('img[src="http://example.com/2"]') to have no violations:
 
@@ -88,7 +88,7 @@ Expected the HTML found at $('img[src="http://example.com/2"]') to have no viola
 
 Received:
 
-"Images must have alternate text (image-alt)"
+"Images must have alternative text (image-alt)"
 
 Fix any of the following:
   Element does not have an alt attribute
@@ -98,7 +98,7 @@ Fix any of the following:
   Element's default semantics were not overridden with role="none" or role="presentation"
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.9/image-alt?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI
 
 ────────
 
@@ -111,8 +111,8 @@ Received:
 "Form elements must have labels (label)"
 
 Fix any of the following:
-  Form element does not have an implicit (wrapped) <label>
-  Form element does not have an explicit <label>
+  Element does not have an implicit (wrapped) <label>
+  Element does not have an explicit <label>
   aria-label attribute does not exist or is empty
   aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
   Element has no title attribute
@@ -120,7 +120,7 @@ Fix any of the following:
   Element's default semantics were not overridden with role="none" or role="presentation"
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.9/label?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI
 
 ────────
 
@@ -142,7 +142,7 @@ Fix any of the following:
   Element has no title attribute
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.9/link-name?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.10/link-name?application=axeAPI
 
 Expected the HTML found at $('a[href$="#link-name-2"]') to have no violations:
 
@@ -162,7 +162,7 @@ Fix any of the following:
   Element has no title attribute
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.9/link-name?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.10/link-name?application=axeAPI
 
 ────────
 
@@ -178,7 +178,7 @@ Fix any of the following:
   Some page content is not contained by landmarks
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI
 
 Expected the HTML found at $('img[src="http://example.com/2"]') to have no violations:
 
@@ -192,7 +192,7 @@ Fix any of the following:
   Some page content is not contained by landmarks
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI
+https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI
 
 Expected the HTML found at $('input') to have no violations:
 
@@ -206,5 +206,5 @@ Fix any of the following:
   Some page content is not contained by landmarks
 
 You can find more information on this issue here: 
-https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI"
+https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI"
 `;

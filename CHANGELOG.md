@@ -1,3 +1,7 @@
+# 10.0.0
+
+- Update axe-core to version 4.10.2 - thanks [@daniel-nagy](https://github.com/daniel-nagy).
+
 # 9.0.0
 
 - Update axe-core to version 4.9.1 - thanks [@1Copenut](https://github.com/1Copenut) and [@longmatthewh](https://github.com/longmatthewh).
