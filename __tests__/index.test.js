@@ -67,7 +67,7 @@ describe("jest-axe", () => {
       const results = await axe(failingHtmlExample);
       const violation = results.violations[0];
       expect(violation.id).toBe("link-name");
-      expect(violation.description).toBe("Ensures links have discernible text");
+      expect(violation.description).toBe("Ensure links have discernible text");
     });
 
     it("can ignore allowed failures", async () => {
@@ -120,7 +120,7 @@ describe("jest-axe", () => {
       results = await axe(failingHtmlExample);
       const violation = results.violations[0];
       expect(violation.id).toBe("link-name");
-      expect(violation.description).toBe("Ensures links have discernible text");
+      expect(violation.description).toBe("Ensure links have discernible text");
     });
   });
 
