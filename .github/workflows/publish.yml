@@ -1,11 +1,9 @@
 name: Publish package when release tag created
 
-# Allow manual run if needed
 on:
+  # Allow manual run if needed
   workflow_dispatch:
-
-# Automatically run after GitHub Release tag created
-on:
+  # Automatically run after GitHub Release tag created
   push:
     tags:
       - 'v*'
