@@ -1,3 +1,8 @@
+# 11.0.0
+
+- Update axe-core to version 4.12.1 - see https://github.com/dequelabs/axe-core/releases for changes between 4.10.2 to 4.12.1
+- Support Jest 30 (jest-matcher-utils to 30.4.1) which drops support for Node.js 16.x - see upgrade guide here https://jestjs.io/docs/upgrading-to-jest30#compatibility
+
 # 10.0.0
 
 - Update axe-core to version 4.10.2 - thanks [@daniel-nagy](https://github.com/daniel-nagy).
