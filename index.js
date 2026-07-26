@@ -1,4 +1,3 @@
-"use strict";
 const axeCore = require("axe-core");
 const merge = require("lodash.merge");
 const chalk = require("chalk");
@@ -127,13 +126,13 @@ const toHaveNoViolations = {
   toHaveNoViolations(results) {
     if (typeof results.violations === "undefined") {
       throw new Error(
-        "Unexpected aXe results object. No violations property found.\nDid you change the `reporter` in your aXe configuration?"
+        "Unexpected aXe results object. No violations property found.\nDid you change the `reporter` in your aXe configuration?",
       );
     }
 
     const violations = filterViolations(
       results.violations,
-      results.toolOptions ? results.toolOptions.impactLevels : []
+      results.toolOptions ? results.toolOptions.impactLevels : [],
     );
 
     const reporter = (violations) => {
@@ -164,7 +163,7 @@ const toHaveNoViolations = {
                 lineBreak +
                 (violation.helpUrl
                   ? `You can find more information on this issue here: \n${chalk.blue(
-                      violation.helpUrl
+                      violation.helpUrl,
                     )}`
                   : "")
               );
@@ -183,9 +182,7 @@ const toHaveNoViolations = {
       if (pass) {
         return;
       }
-      return (
-        matcherHint(".toHaveNoViolations") + "\n\n" + `${formatedViolations}`
-      );
+      return `${matcherHint(".toHaveNoViolations")}\n\n${formatedViolations}`;
     };
 
     return { actual: violations, message, pass };
