@@ -1,0 +1,26 @@
+version: 2
+
+updates:
+  # Update npm packages
+  - package-ecosystem: npm
+    directory: /
+
+    schedule:
+      interval: monthly
+      time: '10:30'
+      timezone: 'Europe/London'
+
+    cooldown:
+      default-days: 7
+
+  # Update GitHub Actions
+  - package-ecosystem: github-actions
+    directory: /
+
+    schedule:
+      interval: monthly
+      time: '10:30'
+      timezone: 'Europe/London'
+
+    cooldown:
+      default-days: 7
