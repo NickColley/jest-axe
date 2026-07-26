@@ -219,7 +219,7 @@ describe("jest-axe", () => {
       expect(() => {
         matcherFunction({});
       }).toThrow(
-        "Unexpected aXe results object. No violations property found.\nDid you change the `reporter` in your aXe configuration?"
+        "Unexpected aXe results object. No violations property found.\nDid you change the `reporter` in your aXe configuration?",
       );
     });
 
