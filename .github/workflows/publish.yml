@@ -1,5 +1,10 @@
 name: Publish package when release tag created
 
+# Allow manual run if needed
+on:
+  workflow_dispatch:
+
+# Automatically run after GitHub Release tag created
 on:
   push:
     tags:
@@ -20,6 +25,7 @@ jobs:
           node-version-file: .nvmrc
           registry-url: 'https://registry.npmjs.org'
           package-manager-cache: false  # never use caching in release builds
+      - run: npm install -g npm@latest # npm stage publish is only in 12.x
       - run: npm ci
       - run: npm test
       - run: npm stage publish
