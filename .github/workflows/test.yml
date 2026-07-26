@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
   build:
 
@@ -16,7 +19,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16, 18, 20, 22]
+        node-version: [16, 18, 20, 22, 24, 26]
 
     steps:
     - uses: actions/checkout@v2
