@@ -1,4 +1,3 @@
-"use strict";
 const axeCore = require("axe-core");
 const merge = require("lodash.merge");
 const chalk = require("chalk");
@@ -184,7 +183,7 @@ const toHaveNoViolations = {
         return;
       }
       return (
-        matcherHint(".toHaveNoViolations") + "\n\n" + `${formatedViolations}`
+        `${matcherHint(".toHaveNoViolations")}\n\n${formatedViolations}`
       );
     };
 
