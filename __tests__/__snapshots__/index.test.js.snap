@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`jest-axe readme first readme example should demonstrate this matcher\`s usage 1`] = `
 "expect(received).toHaveNoViolations(expected)
