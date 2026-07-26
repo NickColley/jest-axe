@@ -11,7 +11,7 @@
   "scripts": {
     "test": "npm run lint && npm run jest",
     "jest": "FORCE_COLOR=0 jest",
-    "lint": "echo 'linting...'"
+    "lint": "npx @biomejs/biome check"
   },
   "keywords": [
     "jest",
@@ -32,6 +32,7 @@
     "lodash.merge": "4.6.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/vue": "^6.6.1",
     "@vue/test-utils": "^2.2.1",
