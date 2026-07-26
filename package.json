@@ -2,7 +2,10 @@
   "name": "jest-axe",
   "version": "11.0.0",
   "description": "Custom Jest matcher for aXe for testing accessibility",
-  "repository": "nickcolley/jest-axe",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickColley/jest-axe"
+  },
   "main": "index.js",
   "files": [
     "index.js",
