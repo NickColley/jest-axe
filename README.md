@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/jest-axe.svg)](http://npm.im/jest-axe)
 ![node](https://img.shields.io/node/v/jest-axe)
-[![Repository CI Status](https://github.com/nickcolley/jest-axe/workflows/test/badge.svg)](https://github.com/nickcolley/jest-axe/actions?query=workflow%3Atest)
+[![Repository CI Status](https://github.com/NickColley/jest-axe/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/nickcolley/jest-axe/actions?query=workflow%3Atest+branch%3Amain)
 
 Custom [Jest][Jest] matcher for [axe](https://github.com/dequelabs/axe-core) for testing accessibility
 
