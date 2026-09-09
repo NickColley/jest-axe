@@ -1,3 +1,9 @@
+# Unreleased (breaking)
+
+Requires Node.js 22.x and above.
+
+- Remove dependency on chalk to use native Node.js styleText.
+
 # 11.0.0
 
 - Update axe-core to version 4.12.1 - see https://github.com/dequelabs/axe-core/releases for changes between 4.10.2 to 4.12.1
