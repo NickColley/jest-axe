@@ -29,7 +29,7 @@
     "node": ">= 18.0.0"
   },
   "dependencies": {
-    "axe-core": "4.12.1",
+    "axe-core": "4.13.0",
     "chalk": "4.1.2",
     "jest-matcher-utils": "30.4.1",
     "lodash.merge": "4.6.2"
