@@ -1,6 +1,7 @@
+const { styleText } = require("node:util");
+
 const axeCore = require("axe-core");
 const merge = require("lodash.merge");
-const chalk = require("chalk");
 const { printReceived, matcherHint } = require("jest-matcher-utils");
 
 const AXE_RULES_COLOR = axeCore.getRules(["cat.color"]);
@@ -153,18 +154,16 @@ const toHaveNoViolations = {
                 lineBreak;
               return (
                 expectedText +
-                chalk.grey(node.html) +
+                styleText("grey", node.html) +
                 lineBreak +
                 `Received:` +
                 lineBreak +
                 printReceived(`${violation.help} (${violation.id})`) +
                 lineBreak +
-                chalk.yellow(node.failureSummary) +
+                styleText("yellow", node.failureSummary) +
                 lineBreak +
                 (violation.helpUrl
-                  ? `You can find more information on this issue here: \n${chalk.blue(
-                      violation.helpUrl,
-                    )}`
+                  ? `You can find more information on this issue here: \n${styleText("blue", violation.helpUrl)}`
                   : "")
               );
             })
