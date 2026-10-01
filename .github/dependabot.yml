@@ -5,6 +5,12 @@ updates:
   - package-ecosystem: npm
     directory: /
 
+    groups:
+      jest:
+        patterns:
+          - 'jest'
+          - 'jest-*'
+
     schedule:
       interval: monthly
       time: '10:30'
