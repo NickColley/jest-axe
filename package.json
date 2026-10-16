@@ -29,7 +29,6 @@
     "node": ">= 22.13.0"
   },
   "dependencies": {
-    "axe-core": "4.12.1",
     "jest-matcher-utils": "30.5.2",
     "lodash.merge": "4.6.2"
   },
@@ -38,11 +37,20 @@
     "@testing-library/react": "^16.3.2",
     "@testing-library/vue": "^8.1.0",
     "@vue/test-utils": "^2.4.11",
+    "axe-core": "^4.14.0",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "vue": "^3.5.40"
+  },
+  "peerDependencies": {
+    "axe-core": "^4.12.1"
+  },
+  "peerDependenciesMeta": {
+    "axe-core": {
+      "optional": true
+    }
   },
   "jest": {
     "testEnvironment": "jsdom",
